@@ -1,33 +1,13 @@
-import Image from "next/image";
-import React from "react";
-import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
-import Link from "next/link";
+import AboutStats from "./AboutStats";
 
-const features: Record<string, string>[] = [
-  {
-    icon: "/home/feature-highlights/feature-trusted.svg",
-    title: "Trusted by thousands of Clients",
-  },
-  {
-    icon: "/home/feature-highlights/feature-experience.svg",
-    title: "Years of Experience",
-  },
-  {
-    icon: "/home/feature-highlights/feature-gold-medalist.svg",
-    title: "Gold Medalist in Astrology",
-  },
-  {
-    icon: "/home/feature-highlights/feature-ethics.svg",
-    title: "Ethical, Confidential & Non-Fear Based",
-  },
-  {
-    icon: "/home/feature-highlights/feature-precision.svg",
-    title: "Precision Meets Practical Guidance",
-  },
-];
-
-const AboutSection = ({ showbadge = true }: { showbadge?: boolean }) => {
+const AboutSection = ({
+  showbadge = true,
+  showStats,
+}: {
+  showbadge?: boolean;
+  showStats?: boolean;
+}) => {
   return (
     <section className="flex flex-col justify-center items-center p-2 py-10 md:p-10 ">
       {showbadge ? (
@@ -62,33 +42,8 @@ const AboutSection = ({ showbadge = true }: { showbadge?: boolean }) => {
             If you're ready to move with purpose and divine timing, you’re
             exactly where you’re meant to be.
           </p>
-          {/* <div className="flex gap-2  justify-center lg:justify-start mt-5 ">
-            <Button size="lg">Book a Session</Button>
-            <Link href="/services">
-              <Button size="lg" variant="outline">
-                Our Services
-              </Button>
-            </Link>
-          </div> */}
+          {showStats ? <AboutStats /> : null}
         </div>
-      </div>
-      <div className="flex flex-wrap justify-center gap-x-2 mt-10">
-        {features.map((feature, index) => (
-          <div
-            key={index}
-            className="w-55 flex flex-col items-center text-center my-5"
-          >
-            <div className="w-45">
-              <img
-                src={feature.icon}
-                alt={feature.title}
-                className="w-full h-auto"
-              />
-            </div>
-
-            <span className="mt-3 text-sm">{feature.title}</span>
-          </div>
-        ))}
       </div>
     </section>
   );

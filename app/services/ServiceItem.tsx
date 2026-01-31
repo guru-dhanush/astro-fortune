@@ -14,25 +14,33 @@ const ServiceItem = ({
   reverse,
 }: ServiceItemProps) => {
   return (
-    <section className="my-3 p-3">
+    <section>
       <div
-        className={`max-w-5xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-          reverse ? "lg:flex-row-reverse" : ""
-        }`}
+        className={`max-w-5xl mx-auto px-6 py-10 border-b-2 
+        grid grid-cols-1 lg:grid-cols-2 gap-12 
+        place-items-center`}
       >
         {/* Image */}
-        <div className={reverse ? "lg:order-2" : ""}>
-          <img src={image} alt={title} className="rounded-2xl w-full h-70" />
+        <div className={reverse ? "lg:order-2" : "lg:order-1"}>
+          <img
+            src={image}
+            alt={title}
+            className="rounded-2xl w-full max-w-md object-cover"
+          />
         </div>
 
         {/* Content */}
-        <div className="space-y-4">
-          <h2 className="text-3xl font-serif text-primary">{title}</h2>
+        <div
+          className={`space-y-4 text-center lg:text-left ${
+            reverse ? "lg:order-1" : "lg:order-2"
+          }`}
+        >
+          <h2 className="text-2xl text-primary">{title}</h2>
 
           {description.map((text, idx) => (
             <p
               key={idx}
-              className="text-sm text-muted-foreground leading-relaxed"
+              className="text-sm text-muted-foreground max-w-md mx-auto lg:mx-0"
             >
               {text}
             </p>

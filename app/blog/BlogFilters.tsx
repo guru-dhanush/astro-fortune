@@ -26,7 +26,11 @@ const BlogFilters = () => {
   return (
     <section className="max-w-7xl mx-auto px-6 mb-12 flex items-center justify-between gap-6">
       {/* Categories (Tabs) */}
-      <Tabs defaultValue="all" orientation="horizontal">
+      <Tabs
+        defaultValue="all"
+        orientation="horizontal"
+        className="border-b w-full"
+      >
         <TabsList variant="line">
           {CATEGORIES.map((cat) => (
             <TabsTrigger key={cat.value} value={cat.value}>
