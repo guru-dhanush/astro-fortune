@@ -70,7 +70,8 @@ const HeroSection = () => {
           </Link>
         </div>
       </div>
-      <img src="hero-image.png" className="hidden md:block" />
+      {/* <img src="hero-image.png" className="hidden md:block" /> */}
+      <img src="hero-image.png" className="" alt="astro" />
       {/* Left icon */}
       <img
         src="/home/left-icon.svg"
