@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-col  gap-x-8 gap-y-4 text-sm">
+          <nav className="flex flex-col lg:flex-row  gap-x-8 gap-y-4 text-sm">
             {FOOTER_DATA.navigation.map((item) => (
               <a
                 key={item}
