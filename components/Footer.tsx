@@ -32,6 +32,9 @@ const FOOTER_DATA = {
 const Footer = () => {
   return (
     <footer className="w-full pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 my-12">
+        <div className="h-px w-full bg-border" />
+      </div>
       {/* TOP */}
       <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-14 lg:gap-20">
         {/* Left */}
@@ -42,7 +45,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-wrap gap-x-8 gap-y-4 text-sm">
+          <nav className="flex flex-col  gap-x-8 gap-y-4 text-sm">
             {FOOTER_DATA.navigation.map((item) => (
               <a
                 key={item}
@@ -59,13 +62,13 @@ const Footer = () => {
         <div className="flex-1 max-w-md lg:max-w-sm space-y-4">
           <h4 className="font-medium">{FOOTER_DATA.newsletter.title}</h4>
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex  gap-3">
             <Input
               type="email"
               placeholder={FOOTER_DATA.newsletter.placeholder}
               className="flex-1 h-10"
             />
-            <Button size="lg" className="sm:w-auto w-full">
+            <Button size="lg" className="">
               {FOOTER_DATA.newsletter.cta}
             </Button>
           </div>
