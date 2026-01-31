@@ -12,14 +12,14 @@ const FUTURE_CTA = {
 const SectionFutureCTA = () => {
   return (
     <section className="w-full p-2 py-10 md:p-10">
-      <div className="max-w-4xl mx-auto px-6 text-center space-y-8">
+      <div className="max-w-4xl mx-auto px-6 text-center">
         {/* Title */}
         <h1 className="text-3xl md:text-5xl font-semibold">
           {FUTURE_CTA.title}
         </h1>
 
         {/* Description */}
-        <p className="text-muted-foreground md:text-md max-w-2xl mx-auto">
+        <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
           {FUTURE_CTA.description}
         </p>
 
