@@ -49,7 +49,7 @@ const Header = () => {
               </NavigationMenuLink>
             </NavigationMenuItem>
 
-            <NavigationMenuItem>
+            <NavigationMenuItem className="text-2xl">
               <NavigationMenuLink
                 asChild
                 className={navigationMenuTriggerStyle()}
@@ -60,7 +60,9 @@ const Header = () => {
 
             {/* SERVICES – Desktop Dropdown */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="text-sm">
+                Services
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-130 gap-3 p-3 md:grid-cols-2">
                   {SERVICES.slice(0, 4).map((service) => (

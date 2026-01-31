@@ -7,14 +7,7 @@ const FOOTER_DATA = {
     name: "astrofortune",
     tagline: "BY KATYAINI",
   },
-  navigation: [
-    "Home",
-    "About",
-    "Services",
-    "Testimonials",
-    "Blogs",
-    "Press/media",
-  ],
+  navigation: ["home", "about", "services", "blog", "contact"],
   newsletter: {
     title: "Stay up to date",
     placeholder: "Enter your email",
@@ -49,8 +42,8 @@ const Footer = () => {
             {FOOTER_DATA.navigation.map((item) => (
               <a
                 key={item}
-                href="#"
-                className="hover:underline underline-offset-4"
+                href={item === "home" ? "/" : item}
+                className="hover:underline underline-offset-4 capitalize"
               >
                 {item}
               </a>
