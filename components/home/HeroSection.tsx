@@ -75,13 +75,13 @@ const HeroSection = () => {
       {/* Left icon */}
       <img
         src="/home/left-icon.svg"
-        className="pointer-events-none absolute top-25  left-2  w-[8vw] max-w-15 opacity-80 sm:block"
+        className="pointer-events-none absolute top-25  left-0 md:left-2 min-w-10 w-[8vw] max-w-15 opacity-80 sm:block"
       />
 
       {/* Right icon */}
       <img
         src="/home/right-icon.svg"
-        className="pointer-events-none absolute top-25 right-2 w-[8vw] max-w-15 opacity-80 sm:block"
+        className="pointer-events-none absolute top-25 right-0 md:right-2 min-w-10 w-[8vw] max-w-15 opacity-80 sm:block"
       />
 
       {/* Center icon */}
