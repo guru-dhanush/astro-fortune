@@ -15,15 +15,17 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
+    text: "Katyaini’s guidance brought clarity and peace during a difficult phase. Her readings were accurate, practical, and easy to understand.",
+    name: "Siddharth Rao",
+    role: "Business Analyst",
+  },
+
+  {
     text: "The reading was surprisingly precise and gave me a lot of emotional clarity. I left the session feeling lighter and more focused.",
     name: "Neha Kapoor",
     role: "Marketing Strategist",
   },
-  {
-    text: "Katyaini explained everything in a very grounded and reassuring way. The guidance felt practical, not vague.",
-    name: "Siddharth Rao",
-    role: "Business Analyst",
-  },
+
   {
     text: "I was unsure at first, but the session exceeded my expectations. It helped me make sense of a confusing situation.",
     name: "Pooja Nair",
@@ -67,12 +69,12 @@ const Testimonials = () => {
   }, [api]);
 
   return (
-    <section className="pt-4 pb-10 text-center">
+    <section className="mt-4 pb-20 text-center">
       <Badge variant="secondary" className="mb-4">
         Testimonials
       </Badge>
 
-      <h2 className="font-bold text-4xl mb-14 text-primary">
+      <h2 className="font-bold text-2xl lg:text-4xl mb-6 lg:mb-8 text-primary">
         Don’t Take your Words for Us
       </h2>
 
@@ -82,20 +84,17 @@ const Testimonials = () => {
           align: "center",
           loop: true,
         }}
-        className="w-full max-w-7xl mx-auto"
+        className=""
       >
         <CarouselContent>
           {testimonials.map((item, index) => {
             const isActive = index === activeIndex;
 
             return (
-              <CarouselItem
-                key={index}
-                className="md:basis-2/3 lg:basis-1/2 px-6"
-              >
+              <CarouselItem key={index} className="basis-2/3">
                 <Card
                   className={cn(
-                    "rounded-[28px] transition-all duration-500 ease-out h-full ",
+                    "rounded-3xl transition-all duration-500 ease-out h-full ",
                     isActive
                       ? "scale-100 bg-primary text-primary-foreground shadow-2xl"
                       : "scale-90 bg-primary/60 text-primary-foreground/70 opacity-70",
@@ -114,7 +113,9 @@ const Testimonials = () => {
 
                       {/* Testimonial text */}
                       <div className="flex justify-center">
-                        <p className="leading-7 mb-8 max-w-100">{item.text}</p>
+                        <p className="leading-7 mb-8 max-w-120 text-md md:text-xl lg:text-2xl text-white">
+                          {item.text}
+                        </p>
                       </div>
 
                       {/* Author */}
@@ -131,12 +132,15 @@ const Testimonials = () => {
         </CarouselContent>
 
         <CarouselPrevious
+          size="icon-lg"
           variant="default"
-          className="top-[calc(100%+0.5rem)] left-1/2 -translate-x-full translate-y-0 border-0"
+          className="top-[calc(100%+2.5rem)] left-1/2 -translate-x-full border-0 w-10 h-10"
         />
+
         <CarouselNext
+          size="icon-lg"
           variant="default"
-          className="top-[calc(100%+0.5rem)] left-1/2 translate-x-2 translate-y-0 border-0"
+          className="top-[calc(100%+2.5rem)] left-1/2 translate-x-4 border-0 w-10 h-10"
         />
       </Carousel>
     </section>

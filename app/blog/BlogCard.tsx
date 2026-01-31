@@ -32,10 +32,10 @@ const BlogCard = ({
       <div className="p-5 space-y-3">
         <span className="text-xs font-medium text-emerald-600">{category}</span>
 
-        <h3 className="text-lg font-semibold flex justify-between items-center">
+        <p className="text-lg font-semibold flex justify-between items-center">
           {title}
           <span className="text-xl">↗</span>
-        </h3>
+        </p>
 
         <p className="text-sm text-black/70 line-clamp-2">{description}</p>
 

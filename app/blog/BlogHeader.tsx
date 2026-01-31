@@ -8,9 +8,9 @@ const BlogHeader = () => {
         Get answers to your problems
       </Badge>
 
-      <h1 className="text-5xl font-serif text-primary mb-6">
+      <h2 className="text-5xl font-serif text-primary mb-6">
         Latest Cosmic Writings
-      </h1>
+      </h2>
 
       <p className="text-muted-foreground max-w-xl mx-auto mb-10">
         I share predictions, remedies, and deeper understandings of how

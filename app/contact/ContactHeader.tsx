@@ -7,9 +7,9 @@ const ContactHeader = () => {
         Contact Us
       </Badge>
 
-      <h1 className="text-5xl font-serif text-primary mb-4">
+      <h2 className="text-5xl font-serif text-primary mb-4">
         We’d love to hear from you
-      </h1>
+      </h2>
 
       <p className="text-muted-foreground">
         Our friendly team is always here to chat.

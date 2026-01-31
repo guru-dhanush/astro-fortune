@@ -1,12 +1,14 @@
+import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 
 const PANCHANG_DATA = {
-  title: "Panchang/Hindu calender",
+  title: "Hindu calender",
   header: {
     label: "Aaj Ka Panchang",
     date: "Wednesday, 9 October 2024",
     location: "New Delhi, India",
   },
+
   sections: [
     {
       left: [
@@ -48,30 +50,57 @@ const PANCHANG_DATA = {
       ],
     },
   ],
+
+  images: [
+    {
+      src: "/home/panchang/sunrise.svg",
+      alt: "Sunrise",
+      label: "Sunrise",
+    },
+    {
+      src: "/home/panchang/sunset.svg",
+      alt: "Sunset",
+      label: "Sunset",
+    },
+    {
+      src: "/home/panchang/moonrise.svg",
+      alt: "Moonrise",
+      label: "Moonrise",
+    },
+    {
+      src: "/home/panchang/moonset.svg",
+      alt: "Moonset",
+      label: "Moonset",
+    },
+  ],
 };
 
 const CalenderSection = () => {
   return (
-    <section className="w-full flex flex-col items-center py-10">
+    <section className="flex flex-col items-center p-2 py-10 md:p-10">
       {/* Title */}
-      <h2 className="text-4xl font-semibold mb-10">{PANCHANG_DATA.title}</h2>
+      <Badge variant="secondary" className="mb-6">
+        Calender
+      </Badge>
+      <h2 className="text-3xl font-semibold mb-6 lg:mb-8">
+        {PANCHANG_DATA.title}
+      </h2>
 
       {/* Card */}
-      <div className="w-full max-w-6xl border border-primary/60 rounded-3xl p-8">
+      <div className="w-full border border-primary/60 rounded-3xl p-5 md:p-5 lg:p-8 m-2 md:m-0">
         {/* Header */}
-        <div className="flex justify-between items-center mb-10">
-          <h3 className="text-xl font-medium">{PANCHANG_DATA.header.label}</h3>
+        <div className="flex justify-between items-start mb-5">
+          <div className="">
+            <h3 className="text-xl font-medium">
+              {PANCHANG_DATA.header.label}
+            </h3>
 
-          <div className="flex flex-col justify-center items-center">
-            <p className="text-sm">
-              {PANCHANG_DATA.header.date}
-            </p>
-            <p className="text-xs">
-              {PANCHANG_DATA.header.location}
-            </p>
+            <div className="flex flex-col my-2 text-muted-foreground">
+              <p className="text-xs">{PANCHANG_DATA.header.date}</p>
+              {/* <p className="text-xs">{PANCHANG_DATA.header.location}</p> */}
+            </div>
           </div>
-
-          <Button size="lg" variant="outline">
+          <Button size="lg" variant="outline" className="p-1 md:p-3">
             Detailed Panchang
           </Button>
         </div>
@@ -89,7 +118,10 @@ const CalenderSection = () => {
               >
                 <div>
                   {section.left.map((item, i) => (
-                    <p key={i} className="flex justify-between text-end">
+                    <p
+                      key={i}
+                      className="flex justify-between text-end text-xs md:text-sm"
+                    >
                       <span className="font-semibold">{item.label}:</span>
                       {item.value}
                     </p>
@@ -98,7 +130,10 @@ const CalenderSection = () => {
 
                 <div>
                   {section.right.map((item, i) => (
-                    <p key={i} className="flex justify-between text-end">
+                    <p
+                      key={i}
+                      className="flex justify-between text-end text-xs md:text-sm"
+                    >
                       <span className="font-semibold">{item.label}:</span>
                       {item.value}
                     </p>
@@ -109,10 +144,16 @@ const CalenderSection = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-6">
-            <img src="/home/panchang/sunrise.svg" />
-            <img src="/home/panchang/sunset.svg" />
-            <img src="/home/panchang/moonrise.svg" />
-            <img src="/home/panchang/moonset.svg" />
+            {PANCHANG_DATA.images.map((image, idx) => (
+              <div key={idx} className="flex flex-col items-center gap-2">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full max-w-30"
+                />
+                <span className="text-xs font-medium">{image.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

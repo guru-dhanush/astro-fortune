@@ -7,9 +7,9 @@ const AboutHeader = () => {
         About
       </Badge>
 
-      <h1 className="text-5xl font-serif text-primary mb-6">
+      <h2 className="text-5xl font-serif text-primary mb-6">
         Unlock clarity through astrological insight
-      </h1>
+      </h2>
 
       <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
         Personalized guidance to help you decide better, act at the right time,

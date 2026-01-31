@@ -1,64 +1,75 @@
+"use client";
+
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import { Button } from "./ui/button";
-import Image from "next/image";
-import Link from "next/link";
+
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
+import { Button } from "@/components/ui/button";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Menu01Icon } from "@hugeicons/core-free-icons";
+
+const components: { title: string; href: string; description: string }[] = [
+  {
+    title: "Alert Dialog",
+    href: "/docs/primitives/alert-dialog",
+    description: "A modal dialog that interrupts the user.",
+  },
+  {
+    title: "Hover Card",
+    href: "/docs/primitives/hover-card",
+    description: "Preview content behind a link.",
+  },
+  {
+    title: "Progress",
+    href: "/docs/primitives/progress",
+    description: "Shows task completion progress.",
+  },
+  {
+    title: "Scroll-area",
+    href: "/docs/primitives/scroll-area",
+    description: "Separates content visually.",
+  },
+  {
+    title: "Tabs",
+    href: "/docs/primitives/tabs",
+    description: "Layered tab panels.",
+  },
+  {
+    title: "Tooltip",
+    href: "/docs/primitives/tooltip",
+    description: "Displays contextual information.",
+  },
+];
 
 const Header = () => {
-  const components: { title: string; href: string; description: string }[] = [
-    {
-      title: "Alert Dialog",
-      href: "/docs/primitives/alert-dialog",
-      description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-      title: "Hover Card",
-      href: "/docs/primitives/hover-card",
-      description:
-        "For sighted users to preview content available behind a link.",
-    },
-    {
-      title: "Progress",
-      href: "/docs/primitives/progress",
-      description:
-        "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-      title: "Scroll-area",
-      href: "/docs/primitives/scroll-area",
-      description: "Visually or semantically separates content.",
-    },
-    {
-      title: "Tabs",
-      href: "/docs/primitives/tabs",
-      description:
-        "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-      title: "Tooltip",
-      href: "/docs/primitives/tooltip",
-      description:
-        "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    },
-  ];
-
   return (
-    <header className="py-2 flex justify-between">
-      <Link href="/">
-        <Image src="/astrologo.png" alt="Logo" width={180} height={40} />
+    <header className="flex items-center justify-between px-4 py-2 md:px-8 border-b">
+      {/* Logo */}
+      <Link href="/" className="flex items-center">
+        <Image
+          src="/astrologo.png"
+          alt="Logo"
+          width={180}
+          height={40}
+          className="w-[140px] md:w-[180px]"
+          priority
+        />
       </Link>
-      <nav>
+
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -69,6 +80,7 @@ const Header = () => {
                 <Link href="/">Home</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
@@ -103,6 +115,7 @@ const Header = () => {
                 <Link href="/blog">Blog</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
@@ -114,13 +127,73 @@ const Header = () => {
           </NavigationMenuList>
         </NavigationMenu>
       </nav>
+
+      {/* Desktop CTA */}
       <a
         href="https://calendly.com/zintronia/30min?month=2026-01"
         target="_blank"
         rel="noopener noreferrer"
+        className="hidden md:block"
       >
-        <Button size="lg"> Book an appointment</Button>
+        <Button size="lg">Book an appointment</Button>
       </a>
+
+      {/* Mobile Menu */}
+      <div className="md:hidden">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <HugeiconsIcon
+                icon={Menu01Icon}
+                size={24}
+                color="currentColor"
+                strokeWidth={1.5}
+              />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent side="right" className="w-[280px]">
+            <nav className="mt-6 flex flex-col gap-4">
+              <Link href="/" className="text-lg font-medium">
+                Home
+              </Link>
+
+              <Link href="/about" className="text-lg font-medium">
+                About
+              </Link>
+
+              <div className="flex flex-col gap-2">
+                <span className="text-sm text-muted-foreground">Services</span>
+                {components.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="pl-2 text-sm"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+
+              <Link href="/blog" className="text-lg font-medium">
+                Blog
+              </Link>
+
+              <Link href="/contact" className="text-lg font-medium">
+                Contact
+              </Link>
+
+              <a
+                href="https://calendly.com/zintronia/30min?month=2026-01"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="mt-4 w-full">Book an appointment</Button>
+              </a>
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
     </header>
   );
 };
@@ -131,16 +204,20 @@ function ListItem({
   title,
   children,
   href,
-  ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: {
+  title: string;
+  children: React.ReactNode;
+  href: string;
+}) {
   return (
-    <li {...props}>
+    <li>
       <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="flex flex-col gap-1 text-sm">
-            <div className="leading-none font-medium">{title}</div>
-            <div className="text-muted-foreground line-clamp-2">{children}</div>
-          </div>
+        <Link
+          href={href}
+          className="flex flex-col gap-1 rounded-md p-2 hover:bg-muted"
+        >
+          <span className="text-sm font-medium">{title}</span>
+          <span className="text-xs text-muted-foreground">{children}</span>
         </Link>
       </NavigationMenuLink>
     </li>
