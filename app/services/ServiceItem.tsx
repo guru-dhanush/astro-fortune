@@ -31,7 +31,7 @@ const ServiceItem = ({
 
         {/* Content */}
         <div
-          className={`space-y-4 text-center lg:text-left ${
+          className={`space-y-4 lg:text-left ${
             reverse ? "lg:order-1" : "lg:order-2"
           }`}
         >
