@@ -1,159 +1,128 @@
+"use client";
+
+import { useMemo } from "react";
 import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-
-const PANCHANG_DATA = {
-  title: "Hindu calender",
-  header: {
-    label: "Aaj Ka Panchang",
-    date: "Wednesday, 9 October 2024",
-    location: "New Delhi, India",
-  },
-
-  sections: [
-    {
-      left: [
-        { label: "Amanta", value: "Ashwin" },
-        { label: "Purnimanta", value: "Ashwin" },
-      ],
-      right: [
-        { label: "Vikram", value: "2081 Peengal" },
-        { label: "Shaka", value: "1946 Krodhi" },
-      ],
-    },
-    {
-      left: [
-        { label: "Tithi", value: "Shukla Shashthi" },
-        { label: "Purnimanta", value: "Shukla Shashthi" },
-      ],
-      right: [
-        { label: "Vikram", value: "2081 Peengal" },
-        { label: "Shaka", value: "1946 Krodhi" },
-      ],
-    },
-    {
-      left: [
-        { label: "Karan", value: "Tatil" },
-        {
-          label: "Purnimanta",
-          value: (
-            <>
-              2024-10-09
-              <br />
-              12:12:25
-            </>
-          ),
-        },
-      ],
-      right: [
-        { label: "Vikram", value: "2081 Peengal" },
-        { label: "Shaka", value: "1946 Krodhi" },
-      ],
-    },
-  ],
-
-  images: [
-    {
-      src: "/home/panchang/sunrise.svg",
-      alt: "Sunrise",
-      label: "Sunrise",
-    },
-    {
-      src: "/home/panchang/sunset.svg",
-      alt: "Sunset",
-      label: "Sunset",
-    },
-    {
-      src: "/home/panchang/moonrise.svg",
-      alt: "Moonrise",
-      label: "Moonrise",
-    },
-    {
-      src: "/home/panchang/moonset.svg",
-      alt: "Moonset",
-      label: "Moonset",
-    },
-  ],
-};
+import { getFullPanchang } from "@/lib/panchang";
 
 const CalenderSection = () => {
+  const p = useMemo(() => getFullPanchang(new Date()), []);
+
   return (
     <section className="flex flex-col items-center p-2 py-10 md:p-10">
-      {/* Title */}
       <Badge variant="secondary" className="mb-6">
-        Calender
+        Calendar
       </Badge>
-      <h2 className="text-3xl font-semibold mb-6 lg:mb-8">
-        {PANCHANG_DATA.title}
-      </h2>
+      <h2 className="text-3xl font-semibold mb-6 lg:mb-8">Hindu Calendar</h2>
 
-      {/* Card */}
       <div className="w-full border border-primary/60 rounded-3xl p-5 md:p-5 lg:p-8 m-2 md:m-0">
         {/* Header */}
         <div className="flex justify-between items-start mb-5">
-          <div className="">
-            <h3 className="text-xl font-medium">
-              {PANCHANG_DATA.header.label}
-            </h3>
-
+          <div>
+            <h3 className="text-xl font-medium">Aaj Ka Panchang</h3>
             <div className="flex flex-col my-2 text-muted-foreground">
-              <p className="text-xs">{PANCHANG_DATA.header.date}</p>
-              {/* <p className="text-xs">{PANCHANG_DATA.header.location}</p> */}
+              <p className="text-xs">{p.dateStr}</p>
+              <p className="text-xs">New Delhi, India</p>
             </div>
           </div>
-          <Button size="lg" variant="outline" className="p-1 md:p-3">
-            Detailed Panchang
-          </Button>
+          <div className="text-right">
+            <p className="text-xs font-semibold text-primary">{p.vara}</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              {p.paksha === "Shukla" ? "🌕" : "🌑"} {p.paksha} Paksha
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div className="md:col-span-2 space-y-8 text-sm">
-            {PANCHANG_DATA.sections.map((section, idx) => (
-              <div
-                key={idx}
-                className={`grid grid-cols-2 gap-6 ${
-                  idx !== PANCHANG_DATA.sections.length - 1
-                    ? "border-b border-[#c9a27d]/30 pb-6"
-                    : ""
-                }`}
-              >
-                <div>
-                  {section.left.map((item, i) => (
-                    <p
-                      key={i}
-                      className="flex justify-between text-end text-xs md:text-sm"
-                    >
-                      <span className="font-semibold">{item.label}:</span>
-                      {item.value}
-                    </p>
-                  ))}
-                </div>
+          {/* Panchang data columns */}
+          <div className="md:col-span-2 space-y-6 text-sm">
 
-                <div>
-                  {section.right.map((item, i) => (
-                    <p
-                      key={i}
-                      className="flex justify-between text-end text-xs md:text-sm"
-                    >
-                      <span className="font-semibold">{item.label}:</span>
-                      {item.value}
-                    </p>
-                  ))}
-                </div>
+            {/* Row 1 — Lunar month & year */}
+            <div className="grid grid-cols-2 gap-6 border-b border-[#c9a27d]/30 pb-6">
+              <div className="space-y-2">
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Amanta:</span>
+                  <span>{p.amantaMonth}</span>
+                </p>
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Purnimanta:</span>
+                  <span>{p.purnimantaMonth}</span>
+                </p>
               </div>
-            ))}
+              <div className="space-y-2">
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Vikram:</span>
+                  <span>{p.vikramYear} {p.vikramCycle}</span>
+                </p>
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Shaka:</span>
+                  <span>{p.shakaYear} {p.shakaCycle}</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Row 2 — Tithi & Nakshatra */}
+            <div className="grid grid-cols-2 gap-6 border-b border-[#c9a27d]/30 pb-6">
+              <div className="space-y-2">
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Tithi:</span>
+                  <span>{p.paksha} {p.tithi}</span>
+                </p>
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Nakshatra:</span>
+                  <span>{p.nakshatra}</span>
+                </p>
+              </div>
+              <div className="space-y-2">
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Yoga:</span>
+                  <span>{p.yoga}</span>
+                </p>
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Karana:</span>
+                  <span>{p.karana}</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Row 3 — Sunrise & Sunset */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Sunrise:</span>
+                  <span>{p.sunrise}</span>
+                </p>
+              </div>
+              <div className="space-y-2">
+                <p className="flex justify-between text-xs md:text-sm">
+                  <span className="font-semibold">Sunset:</span>
+                  <span>{p.sunset}</span>
+                </p>
+              </div>
+            </div>
           </div>
 
+          {/* Right column — sun/moon icons */}
           <div className="grid grid-cols-2 gap-6">
-            {PANCHANG_DATA.images.map((image, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-2">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full max-w-30"
-                />
-                <span className="text-xs font-medium">{image.label}</span>
-              </div>
-            ))}
+            <div className="flex flex-col items-center gap-2">
+              <img src="/home/panchang/sunrise.svg" alt="Sunrise" className="w-full max-w-30" />
+              <span className="text-xs font-medium">Sunrise</span>
+              <span className="text-xs text-muted-foreground">{p.sunrise}</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <img src="/home/panchang/sunset.svg" alt="Sunset" className="w-full max-w-30" />
+              <span className="text-xs font-medium">Sunset</span>
+              <span className="text-xs text-muted-foreground">{p.sunset}</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <img src="/home/panchang/moonrise.svg" alt="Moonrise" className="w-full max-w-30" />
+              <span className="text-xs font-medium">Paksha</span>
+              <span className="text-xs text-muted-foreground">{p.paksha}</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <img src="/home/panchang/moonset.svg" alt="Nakshatra" className="w-full max-w-30" />
+              <span className="text-xs font-medium">Nakshatra</span>
+              <span className="text-xs text-muted-foreground">{p.nakshatra}</span>
+            </div>
           </div>
         </div>
       </div>
