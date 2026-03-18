@@ -110,16 +110,11 @@ const Header = () => {
       </nav>
 
       {/* Desktop CTA */}
-      <a
-        href="https://calendly.com/zintronia/30min?month=2026-01"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hidden md:block"
-      >
+      <Link href="/booking" className="hidden md:block">
         <Button size="lg" className="w-full text-base">
           Book an appointment
         </Button>
-      </a>
+      </Link>
 
       {/* ================= Mobile Menu ================= */}
       {/* ================= Mobile Menu ================= */}
@@ -189,15 +184,11 @@ const Header = () => {
 
             {/* CTA – fixed at bottom */}
             <div className="mt-auto border-t px-5 py-4">
-              <a
-                href="https://calendly.com/zintronia/30min?month=2026-01"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="/booking">
                 <Button className="w-full text-base" size="lg">
                   Book an appointment
                 </Button>
-              </a>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>
