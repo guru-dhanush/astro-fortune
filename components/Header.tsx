@@ -116,7 +116,7 @@ const Header = () => {
         rel="noopener noreferrer"
         className="hidden md:block"
       >
-        <Button size="lg" className="w-full">
+        <Button size="lg" className="w-full text-base">
           Book an appointment
         </Button>
       </a>
@@ -194,7 +194,7 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="w-full" size="lg">
+                <Button className="w-full text-base" size="lg">
                   Book an appointment
                 </Button>
               </a>
