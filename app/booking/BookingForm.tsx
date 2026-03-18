@@ -4,12 +4,12 @@ import { useState } from "react";
 import { User, CalendarDays } from "lucide-react";
 
 const SERVICES_WITH_PRICES = [
-  { title: "Birth Chart Reading", price: "₹4,999", duration: "60 Minutes" },
-  { title: "Relationships Analysis", price: "₹5,100", duration: "60 Minutes" },
-  { title: "Career and Finance Guidance", price: "₹5,100", duration: "45 Minutes" },
-  { title: "Birth Conception and Progeny", price: "₹6,500", duration: "60 Minutes" },
-  { title: "Remedies for Peace and Balance", price: "₹4,500", duration: "30 Minutes" },
-  { title: "Academic Guidance", price: "₹3,999", duration: "30 Minutes" },
+  { title: "Birth Chart Reading", price: "₹11,000", duration: "45 Minutes" },
+  { title: "Relationships Analysis", price: "₹5,100", duration: "30 Minutes" },
+  { title: "Career and Finance Guidance", price: "₹5,100", duration: "30 Minutes" },
+  { title: "Birth Conception and Progeny", price: "₹5,100", duration: "30 Minutes" },
+  { title: "Remedies for Peace and Balance", price: "₹5,100", duration: "30 Minutes" },
+  { title: "Academic Guidance", price: "₹5,100", duration: "30 Minutes" },
 ];
 
 const MONTHS = [
