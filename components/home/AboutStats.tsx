@@ -1,6 +1,6 @@
 import React from "react";
 
-const features: Record<string, string>[] = [
+const features = [
   {
     icon: "/home/feature-highlights/feature-trusted.svg",
     title: "Trusted by thousands of Clients",
@@ -23,25 +23,31 @@ const features: Record<string, string>[] = [
   },
 ];
 
-const AboutStats = () => {
-  return (
-    <div className="flex flex-wrap justify-center gap-x-2 mt-10">
-      {features.map((feature, index) => (
-        <div
-          key={index}
-          className="w-55 flex flex-col items-center text-center my-5"
-        >
-          <div className="w-45">
-            <img
-              src={feature.icon}
-              alt={feature.title}
-              className="w-full h-auto"
-            />
-          </div>
+const FeatureCard = ({ icon, title }: { icon: string; title: string }) => (
+  <div className="flex flex-col items-center text-center py-6 px-4">
+    <div className="w-36 h-36">
+      <img src={icon} alt={title} className="w-full h-full object-contain" />
+    </div>
+    <span className="mt-3 text-sm font-medium max-w-[160px]">{title}</span>
+  </div>
+);
 
-          <span className="mt-3 text-sm">{feature.title}</span>
-        </div>
-      ))}
+const AboutStats = () => {
+  const row1 = features.slice(0, 3);
+  const row2 = features.slice(3);
+
+  return (
+    <div className="w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {row1.map((f, i) => (
+          <FeatureCard key={i} icon={f.icon} title={f.title} />
+        ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:max-w-[66.67%] md:mx-auto">
+        {row2.map((f, i) => (
+          <FeatureCard key={i} icon={f.icon} title={f.title} />
+        ))}
+      </div>
     </div>
   );
 };
