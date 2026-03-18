@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { User, CalendarDays } from "lucide-react";
 
 const SERVICES_WITH_PRICES = [
   { title: "Birth Chart Reading", price: "₹4,999", duration: "60 Minutes" },
@@ -79,9 +80,7 @@ export default function BookingForm() {
       {/* ── YOUR DETAILS ── */}
       <section>
         <h2 className="text-xl font-semibold flex items-center gap-2 mb-2" style={{ color: "#7d6352" }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-          </svg>
+          <User size={20} />
           Your Details
         </h2>
         <hr className="border-gray-200 mb-5" />
@@ -139,7 +138,7 @@ export default function BookingForm() {
       <section className="rounded-2xl border border-gray-200 bg-white p-5">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold flex items-center gap-2 text-gray-800">
-            <span className="text-xl">📅</span> Select Date and Time
+            <CalendarDays size={20} className="text-[#7d6352]" /> Select Date and Time
           </h2>
           <span className="text-sm font-medium" style={{ color: "#7d6352" }}>
             Time Zone: Asia/Kolkata
