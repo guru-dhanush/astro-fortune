@@ -1,4 +1,5 @@
 import AboutSection from "@/components/home/AboutSection";
+import AboutStats from "@/components/home/AboutStats";
 import AboutHeader from "./AboutHeader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,6 +12,9 @@ const AboutPage = () => {
       <Header />
       <AboutHeader />
       <AboutSection showbadge={false} />
+      <section className="py-10 px-4 max-w-5xl mx-auto">
+        <AboutStats />
+      </section>
       <Testimonials />
       <SectionFutureCTA />
       <Footer />
