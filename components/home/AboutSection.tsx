@@ -15,14 +15,11 @@ const AboutSection = ({
           About
         </Badge>
       ) : null}
-      <h2 className="font-bold text-2xl lg:text-4xl mb-6 lg:mb-8 text-primary">
-        Meet Katyaini
-      </h2>
-      <div className="flex flex-col lg:flex-row justify-center items-center border border-primary  rounded-4xl mx-5 p-2">
+      <div className="flex flex-col lg:flex-row justify-center items-center rounded-4xl mx-5 p-2">
         <img
           src="/katyaini-photo.svg"
           alt="katyaini"
-          className="w-full border border-primary rounded-3xl"
+          className="w-full rounded-3xl"
         />
         <div className="max-w-80 my-2 lg:ml-5 lg:my-0">
           <p className="text-base leading-6 text-muted-foreground">
