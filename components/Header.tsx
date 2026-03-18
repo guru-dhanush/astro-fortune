@@ -43,16 +43,16 @@ const Header = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/">Home</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
-            <NavigationMenuItem className="text-2xl">
+            <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/about">About</Link>
               </NavigationMenuLink>
@@ -60,7 +60,7 @@ const Header = () => {
 
             {/* SERVICES – Desktop Dropdown */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-sm">
+              <NavigationMenuTrigger className="text-sm lg:text-base">
                 Services
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -91,7 +91,7 @@ const Header = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/blog">Blog</Link>
               </NavigationMenuLink>
@@ -100,7 +100,7 @@ const Header = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/contact">Contact</Link>
               </NavigationMenuLink>
