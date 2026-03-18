@@ -180,7 +180,8 @@ h1 {
     "box-1"
     "box-2"
     "box-3"
-    "box-4";
+    "box-4"
+    "box-5";
   gap: 1em;
 }
 
@@ -190,7 +191,7 @@ h1 {
     grid-template-areas:
       "box-0 box-1"
       "box-2 box-3"
-      "box-4 box-4";
+      "box-4 box-5";
   }
 }
 
@@ -199,6 +200,6 @@ h1 {
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
       "box-0 box-0 box-1 box-1 box-2 box-2"
-      "box-3 box-3 box-3 box-4 box-4 box-4";
+      "box-3 box-3 box-4 box-4 box-5 box-5";
   }
 }
