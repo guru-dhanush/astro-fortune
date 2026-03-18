@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 
 const SERVICES_WITH_PRICES = [
   { title: "Birth Chart Reading", price: "₹4,999", duration: "60 Minutes" },
@@ -17,7 +16,6 @@ const MONTHS = [
   "July","August","September","October","November","December",
 ];
 const WEEK_DAYS = ["Mo","Tu","We","Th","Fr","Sa","Su"];
-
 const TIME_SLOTS = [
   "9:00 AM","10:00 AM","11:00 AM","12:00 PM",
   "2:00 PM","3:00 PM","4:00 PM","5:00 PM",
@@ -27,45 +25,46 @@ function getFirstDayOffset(year: number, month: number) {
   const day = new Date(year, month, 1).getDay();
   return day === 0 ? 6 : day - 1;
 }
-
 function getDaysInMonth(year: number, month: number) {
   return new Date(year, month + 1, 0).getDate();
 }
 
+const inputCls =
+  "w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 outline-none focus:border-[#7d6352] focus:ring-1 focus:ring-[#7d6352]/30 placeholder:text-gray-400 transition-colors";
+
+const labelCls = "block text-sm font-medium text-gray-800 mb-1.5";
+
 export default function BookingForm() {
   const today = new Date();
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [fullName, setFullName]       = useState("");
+  const [email, setEmail]             = useState("");
+  const [mobile, setMobile]           = useState("");
   const [selectedService, setSelectedService] = useState(0);
-  const [selectedDate, setSelectedDate] = useState<number | null>(null);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [calYear, setCalYear] = useState(today.getFullYear());
+  const [selectedDate, setSelectedDate]       = useState<number | null>(null);
+  const [selectedTime, setSelectedTime]       = useState<string | null>(null);
+  const [calYear, setCalYear]   = useState(today.getFullYear());
   const [calMonth, setCalMonth] = useState(today.getMonth());
-
   const [consultName, setConsultName] = useState("");
-  const [gender, setGender] = useState<"Male" | "Female" | "">("");
-  const [birthDate, setBirthDate] = useState("");
-  const [birthTime, setBirthTime] = useState("");
-  const [birthPlace, setBirthPlace] = useState("");
-  const [agreed, setAgreed] = useState(false);
+  const [gender, setGender]           = useState<"Male" | "Female" | "">("");
+  const [birthDate, setBirthDate]     = useState("");
+  const [birthTime, setBirthTime]     = useState("");
+  const [birthPlace, setBirthPlace]   = useState("");
+  const [agreed, setAgreed]           = useState(false);
 
   const service = SERVICES_WITH_PRICES[selectedService];
-  const offset = getFirstDayOffset(calYear, calMonth);
+  const offset      = getFirstDayOffset(calYear, calMonth);
   const daysInMonth = getDaysInMonth(calYear, calMonth);
 
   function prevMonth() {
     if (calMonth === 0) { setCalMonth(11); setCalYear(y => y - 1); }
     else setCalMonth(m => m - 1);
-    setSelectedDate(null);
-    setSelectedTime(null);
+    setSelectedDate(null); setSelectedTime(null);
   }
   function nextMonth() {
     if (calMonth === 11) { setCalMonth(0); setCalYear(y => y + 1); }
     else setCalMonth(m => m + 1);
-    setSelectedDate(null);
-    setSelectedTime(null);
+    setSelectedDate(null); setSelectedTime(null);
   }
 
   const isPast = (day: number) => {
@@ -77,133 +76,151 @@ export default function BookingForm() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 space-y-8">
 
-      {/* ── Your Details ── */}
+      {/* ── YOUR DETAILS ── */}
       <section>
-        <h2 className="text-xl font-semibold text-primary mb-1 flex items-center gap-2">
-          <span className="text-2xl">👤</span> Your Details
+        <h2 className="text-xl font-semibold flex items-center gap-2 mb-2" style={{ color: "#7d6352" }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+          Your Details
         </h2>
-        <hr className="border-primary/20 mb-5" />
+        <hr className="border-gray-200 mb-5" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium mb-1 text-primary">Full Name <span className="text-red-500">*</span></label>
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={fullName}
-              onChange={e => setFullName(e.target.value)}
-              className="w-full rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-muted-foreground"
-            />
+            <label className={labelCls}>Full Name <span style={{ color: "#7d6352" }}>*</span></label>
+            <input type="text" placeholder="Full Name" value={fullName}
+              onChange={e => setFullName(e.target.value)} className={inputCls} />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-primary">Email <span className="text-red-500">*</span></label>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              className="w-full rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-muted-foreground"
-            />
+            <label className={labelCls}>Email <span style={{ color: "#7d6352" }}>*</span></label>
+            <input type="email" placeholder="Email" value={email}
+              onChange={e => setEmail(e.target.value)} className={inputCls} />
           </div>
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1 text-primary">Mobile Number (WhatsApp preferred) <span className="text-red-500">*</span></label>
-          <input
-            type="tel"
-            placeholder="Mobile number with country code"
-            value={mobile}
-            onChange={e => setMobile(e.target.value)}
-            className="w-full rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-muted-foreground"
-          />
+          <label className={labelCls}>
+            Mobile Number (Preferably WhatsApp Number) <span style={{ color: "#7d6352" }}>*</span>
+          </label>
+          <input type="tel" placeholder="Mobile Number with country code" value={mobile}
+            onChange={e => setMobile(e.target.value)} className={inputCls} />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1 text-primary">Select Consultation <span className="text-red-500">*</span></label>
+            <label className={labelCls}>Select Consultation <span style={{ color: "#7d6352" }}>*</span></label>
             <div className="relative">
               <select
                 value={selectedService}
                 onChange={e => setSelectedService(Number(e.target.value))}
-                className="w-full appearance-none rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer"
+                className="w-full appearance-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 outline-none focus:border-[#7d6352] focus:ring-1 focus:ring-[#7d6352]/30 cursor-pointer transition-colors"
               >
                 {SERVICES_WITH_PRICES.map((s, i) => (
-                  <option key={i} value={i}>{s.title} — {s.price}</option>
+                  <option key={i} value={i}>{s.title} - {s.price}</option>
                 ))}
               </select>
-              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-primary">▾</span>
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-xs">▼</span>
             </div>
+            <p className="text-xs mt-1.5 flex items-center gap-1" style={{ color: "#7d6352" }}>
+              <span>✓</span> Pre-selected
+            </p>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-primary">Duration <span className="text-red-500">*</span></label>
-            <div className="rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm text-muted-foreground">
+            <label className={labelCls}>Duration <span style={{ color: "#7d6352" }}>*</span></label>
+            <div className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-500">
               {service.duration}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Select Date & Time ── */}
-      <section className="rounded-2xl border border-primary/20 bg-surface p-5">
-        <h2 className="text-xl font-semibold text-primary mb-4 flex items-center gap-2">
-          <span>📅</span> Select Date and Time
-        </h2>
+      {/* ── SELECT DATE & TIME ── */}
+      <section className="rounded-2xl border border-gray-200 bg-white p-5">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold flex items-center gap-2 text-gray-800">
+            <span className="text-xl">📅</span> Select Date and Time
+          </h2>
+          <span className="text-sm font-medium" style={{ color: "#7d6352" }}>
+            Time Zone: Asia/Kolkata
+          </span>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Calendar */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-4">
-              <button onClick={prevMonth} className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">‹</button>
-              <span className="font-semibold text-primary">{MONTHS[calMonth]} {calYear}</span>
-              <button onClick={nextMonth} className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">›</button>
+              <button
+                onClick={prevMonth}
+                className="w-9 h-9 rounded-md flex items-center justify-center text-white font-bold text-base transition-opacity hover:opacity-80"
+                style={{ backgroundColor: "#7d6352" }}
+              >
+                &lt;
+              </button>
+              <span className="font-semibold text-gray-800">{MONTHS[calMonth]} {calYear}</span>
+              <button
+                onClick={nextMonth}
+                className="w-9 h-9 rounded-md flex items-center justify-center text-white font-bold text-base transition-opacity hover:opacity-80"
+                style={{ backgroundColor: "#7d6352" }}
+              >
+                &gt;
+              </button>
             </div>
 
-            <div className="grid grid-cols-7 gap-1 text-center mb-2">
-              {WEEK_DAYS.map(d => (
-                <div key={d} className="text-xs font-medium text-muted-foreground py-1">{d}</div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-7 gap-1 text-center">
-              {Array.from({ length: offset }).map((_, i) => <div key={`e-${i}`} />)}
-              {Array.from({ length: daysInMonth }).map((_, i) => {
-                const day = i + 1;
-                const past = isPast(day);
-                const selected = selectedDate === day;
-                return (
-                  <button
-                    key={day}
-                    disabled={past}
-                    onClick={() => { setSelectedDate(day); setSelectedTime(null); }}
-                    className={`rounded-full w-8 h-8 mx-auto text-sm transition-colors
-                      ${past ? "text-muted-foreground/40 cursor-not-allowed" : "hover:bg-primary/10 cursor-pointer"}
-                      ${selected ? "bg-primary text-white font-semibold hover:bg-primary" : ""}
-                    `}
-                  >
-                    {day}
-                  </button>
-                );
-              })}
+            <div className="border-t border-gray-100 pt-3 mb-1">
+              <div className="grid grid-cols-7 text-center mb-2">
+                {WEEK_DAYS.map(d => (
+                  <div key={d} className="text-xs font-medium text-gray-400 py-1">{d}</div>
+                ))}
+              </div>
+              <div className="grid grid-cols-7 text-center">
+                {Array.from({ length: offset }).map((_, i) => <div key={`e-${i}`} />)}
+                {Array.from({ length: daysInMonth }).map((_, i) => {
+                  const day = i + 1;
+                  const past = isPast(day);
+                  const selected = selectedDate === day;
+                  return (
+                    <button
+                      key={day}
+                      disabled={past}
+                      onClick={() => { setSelectedDate(day); setSelectedTime(null); }}
+                      className={`w-9 h-9 mx-auto my-0.5 rounded-full text-sm transition-colors flex items-center justify-center
+                        ${past
+                          ? "text-gray-300 cursor-not-allowed"
+                          : "text-gray-700 hover:bg-gray-100 cursor-pointer"}
+                        ${selected ? "text-white font-semibold" : ""}
+                      `}
+                      style={selected ? { backgroundColor: "#7d6352" } : {}}
+                    >
+                      {day}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
+
+          {/* Divider on md */}
+          <div className="hidden md:block w-px bg-gray-100" />
 
           {/* Time Slots */}
           <div className="flex-1">
             {selectedDate ? (
               <>
-                <p className="text-sm font-medium text-primary mb-3">
-                  Available slots for {MONTHS[calMonth]} {selectedDate}
+                <p className="text-sm font-medium text-gray-600 mb-3">
+                  Available slots — {MONTHS[calMonth]} {selectedDate}
                 </p>
                 <div className="grid grid-cols-2 gap-2">
                   {TIME_SLOTS.map(slot => (
                     <button
                       key={slot}
                       onClick={() => setSelectedTime(slot)}
-                      className={`rounded-full border px-3 py-2 text-sm transition-colors
-                        ${selectedTime === slot
-                          ? "bg-primary text-white border-primary"
-                          : "border-primary/30 hover:bg-primary/10 text-primary"}
-                      `}
+                      className="rounded-2xl border px-3 py-2.5 text-sm transition-colors"
+                      style={
+                        selectedTime === slot
+                          ? { backgroundColor: "#7d6352", color: "white", borderColor: "#7d6352" }
+                          : { backgroundColor: "white", color: "#374151", borderColor: "#e5e7eb" }
+                      }
                     >
                       {slot}
                     </button>
@@ -211,7 +228,7 @@ export default function BookingForm() {
                 </div>
               </>
             ) : (
-              <div className="h-full flex items-center justify-center text-center text-muted-foreground text-sm px-4 py-8">
+              <div className="h-full flex items-center justify-center text-center text-gray-400 text-sm px-4 py-12">
                 Please select a date to view available time slots
               </div>
             )}
@@ -219,31 +236,32 @@ export default function BookingForm() {
         </div>
       </section>
 
-      {/* ── Consultation Booked For ── */}
+      {/* ── CONSULTATION BOOKED FOR ── */}
       <section>
-        <h2 className="text-xl font-semibold text-primary mb-1">
-          Consultation Booked For <span className="text-red-500">*</span>
+        <h2 className="text-xl font-semibold text-gray-800 mb-2">
+          Consultation Booked For <span style={{ color: "#7d6352" }}>*</span>
         </h2>
-        <hr className="border-primary/20 mb-5" />
+        <hr className="border-gray-200 mb-5" />
 
-        <div className="flex flex-col sm:flex-row gap-4 mb-4">
+        <div className="flex flex-col sm:flex-row gap-4 mb-4 items-center">
           <input
             type="text"
             placeholder="Full Name"
             value={consultName}
             onChange={e => setConsultName(e.target.value)}
-            className="flex-1 rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-muted-foreground"
+            className={`${inputCls} flex-1`}
           />
-          <div className="flex items-center gap-6 pl-2">
+          <div className="flex items-center gap-6 sm:pl-2 shrink-0">
             {["Male", "Female"].map(g => (
-              <label key={g} className="flex items-center gap-2 cursor-pointer text-sm text-primary">
+              <label key={g} className="flex items-center gap-2 cursor-pointer text-sm text-gray-700">
                 <input
                   type="radio"
                   name="gender"
                   value={g}
                   checked={gender === g}
                   onChange={() => setGender(g as "Male" | "Female")}
-                  className="accent-primary w-4 h-4"
+                  className="w-4 h-4 cursor-pointer"
+                  style={{ accentColor: "#7d6352" }}
                 />
                 {g}
               </label>
@@ -253,57 +271,49 @@ export default function BookingForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium mb-1 text-primary">Birth Date <span className="text-red-500">*</span></label>
-            <input
-              type="date"
-              value={birthDate}
-              onChange={e => setBirthDate(e.target.value)}
-              className="w-full rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 text-muted-foreground"
-            />
+            <label className={labelCls}>Birth Date <span style={{ color: "#7d6352" }}>*</span></label>
+            <input type="date" value={birthDate} onChange={e => setBirthDate(e.target.value)}
+              className={inputCls} />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-primary">Birth Time <span className="text-red-500">*</span></label>
-            <input
-              type="time"
-              value={birthTime}
-              onChange={e => setBirthTime(e.target.value)}
-              className="w-full rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 text-muted-foreground"
-            />
+            <label className={labelCls}>Birth Time <span style={{ color: "#7d6352" }}>*</span></label>
+            <input type="time" value={birthTime} onChange={e => setBirthTime(e.target.value)}
+              className={inputCls} />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-primary">Birth Place <span className="text-red-500">*</span></label>
-          <input
-            type="text"
-            placeholder="Start typing a place..."
-            value={birthPlace}
-            onChange={e => setBirthPlace(e.target.value)}
-            className="w-full rounded-full border border-primary/30 bg-surface px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/40 placeholder:text-muted-foreground"
-          />
+          <label className={labelCls}>
+            Birth Place <span style={{ color: "#7d6352" }}>*</span>
+          </label>
+          <input type="text" placeholder="Start typing a place..." value={birthPlace}
+            onChange={e => setBirthPlace(e.target.value)} className={inputCls} />
         </div>
       </section>
 
-      {/* ── Terms & Submit ── */}
+      {/* ── TERMS & SUBMIT ── */}
       <div className="space-y-5">
-        <label className="flex gap-3 items-start cursor-pointer text-sm text-muted-foreground">
+        <label className="flex gap-3 items-start cursor-pointer text-sm text-gray-600 leading-relaxed">
           <input
             type="checkbox"
             checked={agreed}
             onChange={e => setAgreed(e.target.checked)}
-            className="mt-0.5 accent-primary w-4 h-4 shrink-0"
+            className="mt-0.5 w-4 h-4 shrink-0 cursor-pointer"
+            style={{ accentColor: "#7d6352" }}
           />
-          By proceeding with the booking you agree to our Terms of Service and Privacy Policy. We may create an account for first-time users.
+          By proceeding with the booking you agree to our Terms of Service and Privacy Policy. And you
+          also agree for us to create an account for you with Astrofortune if you are a first-time user
+          and do not have an existing account with us.
         </label>
 
         <div className="flex justify-end">
-          <Button
-            size="lg"
+          <button
             disabled={!agreed}
-            className="rounded-full px-8 disabled:opacity-40"
+            className="px-8 py-3 rounded-full text-white text-sm font-semibold transition-opacity disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed"
+            style={{ backgroundColor: "#7d6352" }}
           >
-            Continue to Booking Details →
-          </Button>
+            Continue to Booking Details
+          </button>
         </div>
       </div>
     </div>
