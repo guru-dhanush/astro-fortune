@@ -40,4 +40,13 @@ export const SERVICES = [
     ],
     image: "/services/peace-remedies.svg",
   },
+  {
+    title: "Educational Consultancy",
+    description: [
+      "Astrological guidance to help students and families make informed decisions about education, course selection, and the right timing for academic milestones.",
+      "This service identifies your natural aptitudes, favourable study periods, and suitable fields of study based on your birth chart.",
+      "Whether you're choosing a stream, planning abroad education, or navigating academic challenges, this reading offers clarity and direction.",
+    ],
+    image: "/services/educational-consultancy.jpg",
+  },
 ];
