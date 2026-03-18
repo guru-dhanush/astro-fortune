@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { User, CalendarDays } from "lucide-react";
+import { getPanchang } from "@/lib/panchang";
 
 const SERVICES_WITH_PRICES = [
   { title: "Birth Chart Reading", price: "₹11,000", duration: "45 Minutes" },
@@ -56,6 +57,15 @@ export default function BookingForm() {
   const service = SERVICES_WITH_PRICES[selectedService];
   const offset      = getFirstDayOffset(calYear, calMonth);
   const daysInMonth = getDaysInMonth(calYear, calMonth);
+
+  const panchang = useMemo(() => {
+    if (!selectedDate) return null;
+    try {
+      return getPanchang(calYear, calMonth + 1, selectedDate);
+    } catch {
+      return null;
+    }
+  }, [selectedDate, calYear, calMonth]);
 
   function prevMonth() {
     if (calMonth === 0) { setCalMonth(11); setCalYear(y => y - 1); }
@@ -202,11 +212,11 @@ export default function BookingForm() {
           {/* Divider on md */}
           <div className="hidden md:block w-px bg-gray-100" />
 
-          {/* Time Slots */}
-          <div className="flex-1">
+          {/* Time Slots + Panchang */}
+          <div className="flex-1 flex flex-col gap-4">
             {selectedDate ? (
               <>
-                <p className="text-sm font-medium text-gray-600 mb-3">
+                <p className="text-sm font-medium text-gray-600">
                   Available slots — {MONTHS[calMonth]} {selectedDate}
                 </p>
                 <div className="grid grid-cols-2 gap-2">
@@ -225,6 +235,31 @@ export default function BookingForm() {
                     </button>
                   ))}
                 </div>
+
+                {panchang && (
+                  <div className="rounded-xl border border-[#7d6352]/20 bg-[#f9f6f4] p-3 mt-1">
+                    <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "#7d6352" }}>
+                      Hindu Panchang
+                    </p>
+                    <div className="space-y-1.5 text-xs text-gray-700">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400 font-medium">Tithi</span>
+                        <span className="font-semibold">
+                          {panchang.paksha === "Shukla" ? "🌕" : "🌑"}{" "}
+                          {panchang.paksha} {panchang.tithi}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400 font-medium">Nakshatra</span>
+                        <span className="font-semibold">⭐ {panchang.nakshatra}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400 font-medium">Yoga</span>
+                        <span className="font-semibold">✦ {panchang.yoga}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </>
             ) : (
               <div className="h-full flex items-center justify-center text-center text-gray-400 text-sm px-4 py-12">
