@@ -43,16 +43,16 @@ const Header = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/">Home</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
-            <NavigationMenuItem className="text-2xl">
+            <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/about">About</Link>
               </NavigationMenuLink>
@@ -60,7 +60,7 @@ const Header = () => {
 
             {/* SERVICES – Desktop Dropdown */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-sm">
+              <NavigationMenuTrigger className="text-sm lg:text-base">
                 Services
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -91,7 +91,7 @@ const Header = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/blog">Blog</Link>
               </NavigationMenuLink>
@@ -100,7 +100,7 @@ const Header = () => {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={`${navigationMenuTriggerStyle()} lg:text-base`}
               >
                 <Link href="/contact">Contact</Link>
               </NavigationMenuLink>
@@ -110,16 +110,11 @@ const Header = () => {
       </nav>
 
       {/* Desktop CTA */}
-      <a
-        href="https://calendly.com/zintronia/30min?month=2026-01"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hidden md:block"
-      >
-        <Button size="lg" className="w-full">
+      <Link href="/booking" className="hidden md:block">
+        <Button size="lg" className="w-full text-base">
           Book an appointment
         </Button>
-      </a>
+      </Link>
 
       {/* ================= Mobile Menu ================= */}
       {/* ================= Mobile Menu ================= */}
@@ -189,15 +184,11 @@ const Header = () => {
 
             {/* CTA – fixed at bottom */}
             <div className="mt-auto border-t px-5 py-4">
-              <a
-                href="https://calendly.com/zintronia/30min?month=2026-01"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="w-full" size="lg">
+              <Link href="/booking">
+                <Button className="w-full text-base" size="lg">
                   Book an appointment
                 </Button>
-              </a>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>

@@ -1,6 +1,6 @@
 import AboutSection from "@/components/home/AboutSection";
+import AboutStats from "@/components/home/AboutStats";
 import AboutHeader from "./AboutHeader";
-import AboutStats from "./AboutStats";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/testimonial";
@@ -11,8 +11,10 @@ const AboutPage = () => {
     <main className="w-full">
       <Header />
       <AboutHeader />
-      <AboutStats />
       <AboutSection showbadge={false} />
+      <section className="py-10 px-4 max-w-5xl mx-auto">
+        <AboutStats />
+      </section>
       <Testimonials />
       <SectionFutureCTA />
       <Footer />

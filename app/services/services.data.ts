@@ -40,4 +40,12 @@ export const SERVICES = [
     ],
     image: "/services/peace-remedies.svg",
   },
+  {
+    title: "Academic Guidance",
+    description: [
+      "Personalized guidance for choosing the right stream, course, or career path based on your birth chart.",
+      "Align your education with your natural strengths and long-term success potential.",
+    ],
+    image: "/services/educational-consultancy.jpg",
+  },
 ];
