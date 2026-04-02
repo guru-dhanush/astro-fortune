@@ -1,62 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Badge } from "../ui/badge";
+import { getFullPanchang } from "@/lib/panchang";
 
 const CalenderSection = () => {
-
-  const [apiData, setApiData] = useState<any>(null);
-
-  useEffect(() => {
-    async function fetchPanchang() {
-      const res = await fetch("/api/panchang");
-      const data = await res.json();
-      setApiData(data);
-    }
-
-    fetchPanchang();
-  }, []);
-
-  const p = useMemo(() => {
-
-    if (!apiData) return null;
-
-   return {
-  dateStr: new Date().toDateString(),
-  vara: apiData.day || "",
-  paksha: apiData.paksha || "",
-  tithi: apiData.tithi?.details?.tithi_name || "",
-  nakshatra: apiData.nakshatra?.details?.nak_name || "",
-  yog: apiData.yog?.details?.yog_name || "",
-  karana: apiData.karan?.details?.karan_name || "",
-  sunrise: apiData.sunrise,
-  sunset: apiData.sunset,
-  amantaMonth: apiData.hindu_maah?.amanta || "",
-  purnimantaMonth: apiData.hindu_maah?.purnimanta || "",
-  vikramYear: apiData.vikram_samvat || "",
-  vikramCycle: apiData.vkram_samvat_name || "",
-  shakaYear: apiData.shaka_samvat || "",
-  shakaCycle: apiData.shaka_samvat_name || ""
-};
-
-  }, [apiData]);
-
-  if (!p) return <div className="py-10 text-center">Loading Panchang...</div>;
-
-  const formatTime = (time: string) => {
-  if (!time) return "";
-
-  const [hour, minute, second] = time.split(":").map(Number);
-
-  const date = new Date();
-  date.setHours(hour, minute, second);
-
-  return date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-};
+  const p = useMemo(() => getFullPanchang(new Date()), []);
 
   return (
     <section className="flex flex-col items-center p-2 py-10 md:p-10">
@@ -78,7 +27,7 @@ const CalenderSection = () => {
           <div className="text-right">
             <p className="text-xs font-semibold text-primary">{p.vara}</p>
             <p className="text-xs text-muted-foreground mt-1">
-              {p.paksha === "Shukla-Paksha" ? "🌕" : "🌑"} {p.paksha}
+              {p.paksha === "Shukla" ? "🌕" : "🌑"} {p.paksha} Paksha
             </p>
           </div>
         </div>
@@ -126,7 +75,7 @@ const CalenderSection = () => {
               <div className="space-y-2">
                 <p className="flex justify-between text-xs md:text-sm">
                   <span className="font-semibold">Yoga:</span>
-                  <span>{p.yog}</span>
+                  <span>{p.yoga}</span>
                 </p>
                 <p className="flex justify-between text-xs md:text-sm">
                   <span className="font-semibold">Karana:</span>
@@ -140,13 +89,13 @@ const CalenderSection = () => {
               <div className="space-y-2">
                 <p className="flex justify-between text-xs md:text-sm">
                   <span className="font-semibold">Sunrise:</span>
-                  <span>{formatTime(p.sunrise)}</span>
+                  <span>{p.sunrise}</span>
                 </p>
               </div>
               <div className="space-y-2">
                 <p className="flex justify-between text-xs md:text-sm">
                   <span className="font-semibold">Sunset:</span>
-                  <span>{formatTime(p.sunset)}</span>
+                  <span>{p.sunset}</span>
                 </p>
               </div>
             </div>
@@ -157,12 +106,12 @@ const CalenderSection = () => {
             <div className="flex flex-col items-center gap-2">
               <img src="/home/panchang/sunrise.svg" alt="Sunrise" className="w-full max-w-30" />
               <span className="text-xs font-medium">Sunrise</span>
-              <span className="text-xs text-muted-foreground">{formatTime(p.sunrise)}</span>
+              <span className="text-xs text-muted-foreground">{p.sunrise}</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <img src="/home/panchang/sunset.svg" alt="Sunset" className="w-full max-w-30" />
               <span className="text-xs font-medium">Sunset</span>
-              <span className="text-xs text-muted-foreground">{formatTime(p.sunset)}</span>
+              <span className="text-xs text-muted-foreground">{p.sunset}</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <img src="/home/panchang/moonrise.svg" alt="Moonrise" className="w-full max-w-30" />
