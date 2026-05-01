@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { User, CalendarDays } from "lucide-react";
 import { getPanchang } from "@/lib/panchang";
 
@@ -53,6 +53,20 @@ export default function BookingForm() {
   const [birthTime, setBirthTime]     = useState("");
   const [birthPlace, setBirthPlace]   = useState("");
   const [agreed, setAgreed]           = useState(false);
+
+  // Load selected service from localStorage
+  useEffect(() => {
+    const savedService = localStorage.getItem("selectedService");
+    if (savedService) {
+      const serviceIndex = SERVICES_WITH_PRICES.findIndex(
+        s => s.title === savedService
+      );
+      if (serviceIndex !== -1) {
+        setSelectedService(serviceIndex);
+      }
+      localStorage.removeItem("selectedService");
+    }
+  }, []);
 
   const service = SERVICES_WITH_PRICES[selectedService];
   const offset      = getFirstDayOffset(calYear, calMonth);
