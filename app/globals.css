@@ -206,6 +206,7 @@ h1 {
 
 /* ─── Blog Markdown Prose Styles ────────────────────────────────── */
 .prose-blog {
+  font-family: "Inter", sans-serif;
   color: #374151;
   line-height: 1.8;
   font-size: 1.0625rem;
@@ -215,7 +216,7 @@ h1 {
 .prose-blog h2,
 .prose-blog h3,
 .prose-blog h4 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Inter", sans-serif;
   color: #1f2937;
   font-weight: 700;
   line-height: 1.3;

@@ -1,10 +1,7 @@
-"use client";
-
 import React from "react";
 import BlogCard from "@/app/blog/BlogCard";
-import { Button } from "../ui/button";
 import { LATEST_POSTS } from "@/lib/constant";
-import Link from "next/link";
+import { getSortedPostsData } from "@/lib/posts";
 
 import {
   Carousel,
@@ -15,6 +12,8 @@ import {
 } from "@/components/ui/carousel";
 
 const LatestPosts = () => {
+  const posts = getSortedPostsData().slice(0, 6);
+
   return (
     <section className="w-full mt-10 mb-20">
       {/* Header */}
@@ -25,10 +24,6 @@ const LatestPosts = () => {
             {LATEST_POSTS.subtitle}
           </p>
         </div>
-
-        {/* <Link href="/blog">
-          <Button size="lg">{LATEST_POSTS.cta}</Button>
-        </Link> */}
       </div>
 
       {/* Carousel */}
@@ -40,9 +35,9 @@ const LatestPosts = () => {
           }}
         >
           <CarouselContent>
-            {LATEST_POSTS.posts.map((post, idx) => (
+            {posts.map((post) => (
               <CarouselItem
-                key={idx}
+                key={post.slug}
                 className="
                   basis-full
                   sm:basis-1/2
@@ -50,9 +45,10 @@ const LatestPosts = () => {
                 "
               >
                 <BlogCard
+                  slug={post.slug}
                   category={post.category}
                   title={post.title}
-                  description={post.description}
+                  description={post.excerpt}
                   image={post.image}
                   author={post.author}
                   date={post.date}
