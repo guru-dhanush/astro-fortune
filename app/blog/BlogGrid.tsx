@@ -1,8 +1,12 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { LATEST_POSTS } from "@/lib/constant";
 import BlogCard from "./BlogCard";
 import React from "react";
+import type { PostMeta } from "@/lib/posts";
+
+type BlogGridProps = {
+  posts: PostMeta[];
+};
 
 const NewsletterCard = () => (
   <div className="border border-border rounded-2xl p-6 bg-surface flex flex-col justify-between">
@@ -35,12 +39,20 @@ const NewsletterCard = () => (
   </div>
 );
 
-const BlogGrid = () => {
+const BlogGrid = ({ posts }: BlogGridProps) => {
   return (
     <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-      {LATEST_POSTS?.posts?.map((post, idx) => (
-        <React.Fragment key={idx}>
-          <BlogCard {...post} />
+      {posts.map((post, idx) => (
+        <React.Fragment key={post.slug}>
+          <BlogCard
+            slug={post.slug}
+            category={post.category}
+            title={post.title}
+            description={post.excerpt}
+            image={post.image}
+            author={post.author}
+            date={post.date}
+          />
 
           {/* Insert newsletter after 3rd post */}
           {idx === 2 && <NewsletterCard />}
