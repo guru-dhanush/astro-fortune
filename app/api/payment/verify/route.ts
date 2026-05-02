@@ -2,6 +2,7 @@ import Razorpay from "razorpay";
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import nodemailer from "nodemailer";
+import path from "path";
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
@@ -17,71 +18,135 @@ async function sendBookingEmail(
   ownerEmail: string,
   bookingData: any
 ) {
+  const logoCid = "astrologo@astrofortune.com";
+
   const customerEmailContent = `
+    <!DOCTYPE html>
     <html>
-      <body style="font-family: Arial, sans-serif; color: #333;">
-        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #7d6352;">Booking Confirmation</h2>
-          <p>Dear ${bookingData.fullName},</p>
-          
-          <p>Your consultation booking has been confirmed successfully!</p>
-          
-          <div style="background-color: #f9f6f4; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #7d6352; margin-top: 0;">Booking Details</h3>
-            <p><strong>Service:</strong> ${bookingData.service}</p>
-            <p><strong>Date:</strong> ${bookingData.date}</p>
-            <p><strong>Time:</strong> ${bookingData.time}</p>
-            <p><strong>Duration:</strong> ${bookingData.duration}</p>
-            <p><strong>Amount Paid:</strong> ₹${bookingData.amount}</p>
-            <p><strong>Consultation For:</strong> ${bookingData.consultName}</p>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+        <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+          <!-- Header -->
+          <div style="background-color: #7d6352; padding: 30px 20px; text-align: center;">
+            <img src="cid:${logoCid}" alt="Astrofortune Logo" style="max-width: 150px; height: auto; margin-bottom: 15px;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600;">Booking Confirmed!</h1>
           </div>
           
-          <p><strong>Your Details:</strong></p>
-          <p>Email: ${bookingData.email}</p>
-          <p>Mobile: ${bookingData.mobile}</p>
-          
-          <p>We will contact you shortly to confirm the consultation timing. Thank you for choosing Astrofortune!</p>
-          
-          <p style="color: #7d6352; margin-top: 30px;">Best regards,<br/>Astrofortune Team</p>
+          <!-- Body -->
+          <div style="padding: 40px 30px;">
+            <p style="color: #333333; font-size: 16px; line-height: 1.6; margin-top: 0;">Dear <strong style="color: #7d6352;">${bookingData.fullName}</strong>,</p>
+            <p style="color: #555555; font-size: 15px; line-height: 1.6;">Thank you for choosing Astrofortune. We are thrilled to confirm your consultation booking.</p>
+            
+            <div style="background-color: #f9f6f4; border-left: 4px solid #7d6352; padding: 20px; border-radius: 4px; margin: 30px 0;">
+              <h3 style="color: #7d6352; margin-top: 0; margin-bottom: 15px; font-size: 18px;">Consultation Details</h3>
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 8px 0; color: #666; width: 40%;">Service:</td>
+                  <td style="padding: 8px 0; color: #333; font-weight: 500;">${bookingData.service}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; color: #666;">Date:</td>
+                  <td style="padding: 8px 0; color: #333; font-weight: 500;">${bookingData.date}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; color: #666;">Time:</td>
+                  <td style="padding: 8px 0; color: #333; font-weight: 500;">${bookingData.time}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; color: #666;">Duration:</td>
+                  <td style="padding: 8px 0; color: #333; font-weight: 500;">${bookingData.duration}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; color: #666;">Consulting For:</td>
+                  <td style="padding: 8px 0; color: #333; font-weight: 500;">${bookingData.consultName}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; color: #666;">Amount Paid:</td>
+                  <td style="padding: 8px 0; color: #2e7d32; font-weight: 600;">₹${bookingData.amount}</td>
+                </tr>
+              </table>
+            </div>
+            
+            <p style="color: #555555; font-size: 15px; line-height: 1.6;">Our team will contact you shortly on <strong>${bookingData.mobile}</strong> to confirm the exact consultation timing.</p>
+            
+            <!-- Footer -->
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eeeeee; text-align: center;">
+              <p style="color: #7d6352; font-size: 16px; font-weight: 600; margin-bottom: 5px;">Best regards,</p>
+              <p style="color: #888888; font-size: 14px; margin-top: 0;">The Astrofortune Team</p>
+            </div>
+          </div>
         </div>
       </body>
     </html>
   `;
 
   const ownerEmailContent = `
+    <!DOCTYPE html>
     <html>
-      <body style="font-family: Arial, sans-serif; color: #333;">
-        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #7d6352;">New Booking Received</h2>
-          
-          <div style="background-color: #f9f6f4; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #7d6352; margin-top: 0;">Booking Information</h3>
-            <p><strong>Customer Name:</strong> ${bookingData.fullName}</p>
-            <p><strong>Email:</strong> ${bookingData.email}</p>
-            <p><strong>Mobile:</strong> ${bookingData.mobile}</p>
-            
-            <p><strong>Service:</strong> ${bookingData.service}</p>
-            <p><strong>Date:</strong> ${bookingData.date}</p>
-            <p><strong>Time:</strong> ${bookingData.time}</p>
-            <p><strong>Duration:</strong> ${bookingData.duration}</p>
-            <p><strong>Amount:</strong> ₹${bookingData.amount}</p>
-            
-            <p><strong>Consultation For:</strong></p>
-            <p>Name: ${bookingData.consultName}</p>
-            <p>Gender: ${bookingData.gender}</p>
-            <p>Birth Date: ${bookingData.birthDate}</p>
-            <p>Birth Time: ${bookingData.birthTime}</p>
-            <p>Birth Place: ${bookingData.birthPlace}</p>
-            
-            <p><strong>Payment Status:</strong> Completed</p>
-            <p><strong>Payment ID:</strong> ${bookingData.paymentId}</p>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+        <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+          <!-- Header -->
+          <div style="background-color: #7d6352; padding: 25px 20px; text-align: center;">
+            <img src="cid:${logoCid}" alt="Astrofortune Logo" style="max-width: 120px; height: auto; margin-bottom: 10px;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 600;">New Booking Received</h1>
           </div>
           
-          <p>Please contact the customer to confirm the consultation details.</p>
+          <!-- Body -->
+          <div style="padding: 30px;">
+            <p style="color: #333333; font-size: 16px; line-height: 1.6; margin-top: 0;">You have received a new consultation booking from <strong>${bookingData.fullName}</strong>.</p>
+            
+            <div style="background-color: #f9f6f4; border-radius: 8px; padding: 20px; margin: 25px 0;">
+              <h3 style="color: #7d6352; margin-top: 0; border-bottom: 1px solid #e0d5cd; padding-bottom: 10px; font-size: 16px;">Contact Information</h3>
+              <p style="margin: 5px 0; color: #555; font-size: 15px;"><strong>Name:</strong> ${bookingData.fullName}</p>
+              <p style="margin: 5px 0; color: #555; font-size: 15px;"><strong>Email:</strong> <a href="mailto:${bookingData.email}" style="color: #7d6352; text-decoration: none;">${bookingData.email}</a></p>
+              <p style="margin: 5px 0; color: #555; font-size: 15px;"><strong>Mobile:</strong> <a href="tel:${bookingData.mobile}" style="color: #7d6352; text-decoration: none;">${bookingData.mobile}</a></p>
+            </div>
+
+            <div style="background-color: #f9f6f4; border-radius: 8px; padding: 20px; margin: 25px 0;">
+              <h3 style="color: #7d6352; margin-top: 0; border-bottom: 1px solid #e0d5cd; padding-bottom: 10px; font-size: 16px;">Booking Details</h3>
+              <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+                <tr><td style="padding: 6px 0; color: #666; width: 40%;">Service:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.service}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Date:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.date}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Time:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.time}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Duration:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.duration}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Amount Paid:</td><td style="padding: 6px 0; color: #2e7d32; font-weight: 600;">₹${bookingData.amount}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Payment ID:</td><td style="padding: 6px 0; color: #333; font-family: monospace;">${bookingData.paymentId}</td></tr>
+              </table>
+            </div>
+
+            <div style="background-color: #f9f6f4; border-radius: 8px; padding: 20px; margin: 25px 0;">
+              <h3 style="color: #7d6352; margin-top: 0; border-bottom: 1px solid #e0d5cd; padding-bottom: 10px; font-size: 16px;">Birth Details</h3>
+              <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+                <tr><td style="padding: 6px 0; color: #666; width: 40%;">Consultation For:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.consultName}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Gender:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.gender}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Birth Date:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.birthDate}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Birth Time:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.birthTime}</td></tr>
+                <tr><td style="padding: 6px 0; color: #666;">Birth Place:</td><td style="padding: 6px 0; color: #333; font-weight: 500;">${bookingData.birthPlace}</td></tr>
+              </table>
+            </div>
+            
+            <p style="color: #555555; font-size: 14px; text-align: center; margin-top: 30px;">Please contact the customer to confirm their booking.</p>
+          </div>
         </div>
       </body>
     </html>
   `;
+
+  const logoPath = path.join(process.cwd(), 'public', 'astrologo.png');
+  const mailAttachments = [
+    {
+      filename: 'astrologo.png',
+      path: logoPath,
+      cid: logoCid,
+    }
+  ];
 
   try {
     // Send email to customer
@@ -90,6 +155,7 @@ async function sendBookingEmail(
       to: customerEmail,
       subject: "Your Astrofortune Booking is Confirmed!",
       html: customerEmailContent,
+      attachments: mailAttachments,
     });
 
     // Send email to owner
@@ -98,6 +164,7 @@ async function sendBookingEmail(
       to: ownerEmail,
       subject: "New Booking Received - Astrofortune",
       html: ownerEmailContent,
+      attachments: mailAttachments,
     });
 
     return true;
