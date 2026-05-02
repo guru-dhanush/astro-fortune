@@ -1,4 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 type ServiceItemProps = {
   title: string;
@@ -13,6 +16,12 @@ const ServiceItem = ({
   image,
   reverse,
 }: ServiceItemProps) => {
+  const router = useRouter();
+  
+  const booknowClicked = (serviceTitle: string) => () => {
+    localStorage.setItem("selectedService", serviceTitle);
+    router.push("/booking");
+  }
   return (
     <section>
       <div
@@ -46,7 +55,9 @@ const ServiceItem = ({
             </p>
           ))}
 
-          <Button size="lg">Book Now</Button>
+          <Button size="lg" onClick={booknowClicked(title)}>
+            Book Now
+          </Button>
         </div>
       </div>
     </section>
