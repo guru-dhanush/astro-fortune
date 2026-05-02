@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { User, CalendarDays } from "lucide-react";
 import { getPanchang } from "@/lib/panchang";
+import Script from "next/script";
 
 const SERVICES_WITH_PRICES = [
   { title: "Birth Chart Reading", price: "₹11,000", duration: "45 Minutes" },
@@ -53,6 +54,9 @@ export default function BookingForm() {
   const [birthTime, setBirthTime]     = useState("");
   const [birthPlace, setBirthPlace]   = useState("");
   const [agreed, setAgreed]           = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Load selected service from localStorage
   useEffect(() => {
@@ -67,6 +71,138 @@ export default function BookingForm() {
       localStorage.removeItem("selectedService");
     }
   }, []);
+
+  const handlePayment = async () => {
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    // Validation
+    if (
+      !fullName ||
+      !email ||
+      !mobile ||
+      !selectedDate ||
+      !selectedTime ||
+      !consultName ||
+      !gender ||
+      !birthDate ||
+      !birthTime ||
+      !birthPlace ||
+      !agreed
+    ) {
+      setErrorMessage("Please fill in all required fields");
+      return;
+    }
+
+    setIsProcessing(true);
+
+    try {
+      // Extract price and convert to number
+      const priceStr = service.price.replace(/[₹,]/g, "");
+      const amount = parseFloat(priceStr);
+
+      // Step 1: Create payment order
+      const createOrderRes = await fetch("/api/payment/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount,
+          bookingDetails: {
+            service: service.title,
+            email,
+            fullName,
+          },
+        }),
+      });
+
+      const orderData = await createOrderRes.json();
+      if (!orderData.success) {
+        throw new Error(orderData.error || "Failed to create payment order");
+      }
+
+      // Step 2: Initialize Razorpay
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        order_id: orderData.orderId,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: "Astrofortune",
+        description: service.title,
+        customer_notify: true,
+        prefill: {
+          name: fullName,
+          email: email,
+          contact: mobile,
+        },
+        handler: async (response: any) => {
+          // Step 3: Verify payment
+          const verifyRes = await fetch("/api/payment/verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              bookingData: {
+                fullName,
+                email,
+                mobile,
+                service: service.title,
+                date: `${MONTHS[calMonth]} ${selectedDate}`,
+                time: selectedTime,
+                duration: service.duration,
+                amount: amount,
+                consultName,
+                gender,
+                birthDate,
+                birthTime,
+                birthPlace,
+              },
+            }),
+          });
+
+          const verifyData = await verifyRes.json();
+          if (verifyData.success) {
+            setSuccessMessage(
+              "✓ Booking confirmed! Confirmation emails have been sent."
+            );
+            // Reset form
+            setTimeout(() => {
+              setFullName("");
+              setEmail("");
+              setMobile("");
+              setSelectedService(0);
+              setSelectedDate(null);
+              setSelectedTime(null);
+              setConsultName("");
+              setGender("");
+              setBirthDate("");
+              setBirthTime("");
+              setBirthPlace("");
+              setAgreed(false);
+            }, 2000);
+          } else {
+            throw new Error(verifyData.error || "Verification failed");
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            setIsProcessing(false);
+            setErrorMessage("Payment cancelled. Please try again.");
+          },
+        },
+      };
+
+      const Razorpay = (window as any).Razorpay;
+      const rzp = new Razorpay(options);
+      rzp.open();
+    } catch (error: any) {
+      console.error("Payment error:", error);
+      setErrorMessage(error.message || "Payment failed. Please try again.");
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   const service = SERVICES_WITH_PRICES[selectedService];
   const offset      = getFirstDayOffset(calYear, calMonth);
@@ -99,7 +235,12 @@ export default function BookingForm() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10 space-y-8">
+    <>
+      <Script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        strategy="lazyOnload"
+      />
+      <div className="max-w-3xl mx-auto px-4 py-10 space-y-8">
 
       {/* ── YOUR DETAILS ── */}
       <section>
@@ -341,6 +482,18 @@ export default function BookingForm() {
 
       {/* ── TERMS & SUBMIT ── */}
       <div className="space-y-5">
+        {errorMessage && (
+          <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            {errorMessage}
+          </div>
+        )}
+
+        {successMessage && (
+          <div className="rounded-2xl border border-green-200 bg-green-50 p-4 text-sm text-green-700">
+            {successMessage}
+          </div>
+        )}
+
         <label className="flex gap-3 items-start cursor-pointer text-sm text-gray-600 leading-relaxed">
           <input
             type="checkbox"
@@ -356,14 +509,16 @@ export default function BookingForm() {
 
         <div className="flex justify-end">
           <button
-            disabled={!agreed}
+            onClick={handlePayment}
+            disabled={isProcessing}
             className="px-8 py-3 rounded-full text-white text-sm font-semibold transition-opacity disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed"
             style={{ backgroundColor: "#7d6352" }}
           >
-            Continue to Booking Details
+            {isProcessing ? "Processing..." : "Continue to Payment"}
           </button>
         </div>
       </div>
     </div>
+    </>
   );
 }
