@@ -9,6 +9,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+type BlogFiltersProps = {
+  category: string;
+  sort: string;
+  onCategoryChange: (category: string) => void;
+  onSortChange: (sort: string) => void;
+};
+
 const CATEGORIES = [
   { label: "View all", value: "all" },
   { label: "Numerology", value: "numerology" },
@@ -22,12 +29,18 @@ const SORT_OPTIONS = [
   { label: "Oldest", value: "oldest" },
 ];
 
-const BlogFilters = () => {
+const BlogFilters = ({
+  category,
+  sort,
+  onCategoryChange,
+  onSortChange,
+}: BlogFiltersProps) => {
   return (
-    <section className="max-w-7xl mx-auto px-6 mb-12 flex items-center justify-between gap-6">
+    <section className="max-w-7xl mx-auto px-6 mb-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
       {/* Categories (Tabs) */}
       <Tabs
-        defaultValue="all"
+        value={category}
+        onValueChange={onCategoryChange}
         orientation="horizontal"
         className="border-b w-full"
       >
@@ -41,8 +54,8 @@ const BlogFilters = () => {
       </Tabs>
 
       {/* Sort (Select) */}
-      <Select defaultValue="recent">
-        <SelectTrigger className="w-[160px]">
+      <Select value={sort} onValueChange={onSortChange}>
+        <SelectTrigger className="w-40">
           <SelectValue placeholder="Sort by" />
         </SelectTrigger>
         <SelectContent>

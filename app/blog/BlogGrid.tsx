@@ -10,6 +10,14 @@ type BlogGridProps = {
 
 
 const BlogGrid = ({ posts }: BlogGridProps) => {
+  if (posts.length === 0) {
+    return (
+      <section className="max-w-7xl mx-auto px-6 py-16 text-center text-muted-foreground">
+        <p className="text-lg font-medium">No posts match your search or filter criteria.</p>
+      </section>
+    );
+  }
+
   return (
     <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
       {posts.map((post, idx) => (
