@@ -1,8 +1,5 @@
 import Header from "@/components/Header";
-import BlogFilters from "./BlogFilters";
-import BlogGrid from "./BlogGrid";
-import BlogHeader from "./BlogHeader";
-import BlogPagination from "./BlogPagination";
+import BlogPageClient from "./BlogPageClient";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/testimonial";
 import { getSortedPostsData } from "@/lib/posts";
@@ -20,10 +17,7 @@ const BlogPage = () => {
   return (
     <main className="w-full">
       <Header />
-      <BlogHeader />
-      <BlogFilters />
-      <BlogGrid posts={posts} />
-      <BlogPagination />
+      <BlogPageClient posts={posts} />
       <Testimonials />
       <Footer />
     </main>

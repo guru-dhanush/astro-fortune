@@ -1,7 +1,14 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 
-const BlogHeader = () => {
+type BlogHeaderProps = {
+  query: string;
+  onQueryChange: (query: string) => void;
+};
+
+const BlogHeader = ({ query, onQueryChange }: BlogHeaderProps) => {
   return (
     <section className="text-center py-20 px-6 max-w-4xl mx-auto">
       <Badge variant="secondary" className="mb-6">
@@ -20,6 +27,8 @@ const BlogHeader = () => {
       <Input
         type="text"
         placeholder="Search"
+        value={query}
+        onChange={(event) => onQueryChange(event.target.value)}
         className="max-w-md mx-auto h-10"
       />
     </section>
