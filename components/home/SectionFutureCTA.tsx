@@ -25,7 +25,9 @@ const SectionFutureCTA = () => {
 
         {/* Actions */}
         <div className="flex justify-center gap-4 pt-4">
-          <Button size="lg">{FUTURE_CTA.primaryCta}</Button>
+          <Link href="/booking">
+            <Button size="lg">{FUTURE_CTA.primaryCta}</Button>
+          </Link>
           <Link href="/services">
             <Button size="lg" variant="outline">
               {FUTURE_CTA.secondaryCta}
