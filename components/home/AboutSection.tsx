@@ -15,14 +15,14 @@ const AboutSection = ({
           About
         </Badge>
       ) : null}
-      <div className="flex flex-col lg:flex-row justify-center items-center rounded-4xl mx-5 p-2">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-12 rounded-4xl mx-5 p-2">
         <img
           src="/katyaini-photo.svg"
           alt="katyaini"
-          className="w-full rounded-3xl"
+          className="w-full lg:w-auto lg:max-w-sm rounded-3xl shrink-0"
         />
-        <div className="max-w-80 my-2 lg:ml-5 lg:my-0">
-          <p className="text-base leading-6 text-muted-foreground">
+        <div className="max-w-2xl">
+          <p className="text-base leading-7 text-muted-foreground indent-4">
             My journey bridges two worlds — the intellectual and the mystical. I
             discovered the esoteric at 11 and trained in Vedic astrology at 21,
             eventually earning gold medals in astrology. Even as I completed my
