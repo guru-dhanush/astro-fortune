@@ -18,7 +18,9 @@ const ServicesSection = () => {
         Our services
       </h2>
       <div className="hidden md:flex gap-2 my-5">
-        <Button size="lg">Book a Session</Button>
+        <Link href="/booking">
+          <Button size="lg">Book a Session</Button>
+        </Link>
         <Link href="/services">
           <Button size="lg" variant="outline">
             Our Services
