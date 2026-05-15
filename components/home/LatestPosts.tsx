@@ -1,7 +1,7 @@
 import React from "react";
 import BlogCard from "@/app/blog/BlogCard";
 import { LATEST_POSTS } from "@/lib/constant";
-import { getSortedPostsData } from "@/lib/posts";
+import { getAllPosts, type PostMeta } from "@/lib/wordpress";
 
 import {
   Carousel,
@@ -11,8 +11,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const LatestPosts = () => {
-  const posts = getSortedPostsData().slice(0, 6);
+const LatestPosts = async () => {
+  const posts: PostMeta[] = await getAllPosts(1, 6);
 
   return (
     <section className="w-full mt-10 mb-20">

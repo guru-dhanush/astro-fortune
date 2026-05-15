@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { PostMeta } from "@/lib/posts";
+import type { PostMeta } from "@/lib/wordpress";
 import BlogFilters from "./BlogFilters";
 import BlogGrid from "./BlogGrid";
 import BlogHeader from "./BlogHeader";
@@ -26,8 +26,9 @@ const BlogPageClient = ({ posts }: BlogPageClientProps) => {
 
         const matchesSearch =
           normalizedQuery.length === 0 ||
-          [post.title, post.excerpt, post.category, post.author]
-            .some((field) => field.toLowerCase().includes(normalizedQuery));
+          [post.title, post.excerpt, post.category, post.author].some((field) =>
+            field.toLowerCase().includes(normalizedQuery),
+          );
 
         return matchesCategory && matchesSearch;
       })

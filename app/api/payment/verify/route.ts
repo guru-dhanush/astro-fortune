@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import nodemailer from "nodemailer";
 import path from "path";
+import { createBookingAction } from "@/app/actions/calendar";
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
@@ -16,7 +17,8 @@ const transporter = nodemailer.createTransport({
 async function sendBookingEmail(
   customerEmail: string,
   ownerEmail: string,
-  bookingData: any
+  bookingData: any,
+  meetLink?: string
 ) {
   const logoCid = "astrologo@astrofortune.com";
 
@@ -70,6 +72,14 @@ async function sendBookingEmail(
               </table>
             </div>
             
+            ${meetLink ? `
+            <div style="background-color: #e3f2fd; border-left: 4px solid #2196f3; padding: 20px; border-radius: 4px; margin: 30px 0;">
+              <h3 style="color: #1976d2; margin-top: 0; margin-bottom: 15px; font-size: 18px;">Google Meet Link</h3>
+              <p style="color: #555555; font-size: 15px; line-height: 1.6; margin-bottom: 15px;">Your consultation will be held via Google Meet. You can join using the link below:</p>
+              <a href="${meetLink}" style="display: inline-block; background-color: #2196f3; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 500;">Join Google Meet</a>
+            </div>
+            ` : ''}
+            
             <p style="color: #555555; font-size: 15px; line-height: 1.6;">Our team will contact you shortly on <strong>${bookingData.mobile}</strong> to confirm the exact consultation timing.</p>
             
             <!-- Footer -->
@@ -120,6 +130,13 @@ async function sendBookingEmail(
                 <tr><td style="padding: 6px 0; color: #666;">Payment ID:</td><td style="padding: 6px 0; color: #333; font-family: monospace;">${bookingData.paymentId}</td></tr>
               </table>
             </div>
+
+            ${meetLink ? `
+            <div style="background-color: #e3f2fd; border-radius: 8px; padding: 20px; margin: 25px 0;">
+              <h3 style="color: #1976d2; margin-top: 0; border-bottom: 1px solid #bbdefb; padding-bottom: 10px; font-size: 16px;">Google Meet Link</h3>
+              <p style="margin: 5px 0; color: #555; font-size: 15px;"><strong>Meet Link:</strong> <a href="${meetLink}" style="color: #1976d2; text-decoration: none;">${meetLink}</a></p>
+            </div>
+            ` : ''}
 
             <div style="background-color: #f9f6f4; border-radius: 8px; padding: 20px; margin: 25px 0;">
               <h3 style="color: #7d6352; margin-top: 0; border-bottom: 1px solid #e0d5cd; padding-bottom: 10px; font-size: 16px;">Birth Details</h3>
@@ -237,14 +254,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send emails
+    // Create Google Calendar event after successful payment
+    let meetLink: string | undefined;
+    if (bookingData.startTime && bookingData.endTime) {
+      const calendarResult = await createBookingAction(
+        bookingData.date,
+        bookingData.startTime,
+        bookingData.endTime,
+        {
+          fullName: bookingData.fullName,
+          email: bookingData.email,
+          mobile: bookingData.mobile,
+          service: bookingData.service,
+        }
+      );
+
+      if (calendarResult.success && calendarResult.meetLink) {
+        meetLink = calendarResult.meetLink;
+      }
+    }
+
+    // Send emails with Google Meet link
     const emailSent = await sendBookingEmail(
       bookingData.email,
       process.env.GMAIL_USER,
       {
         ...bookingData,
         paymentId: razorpay_payment_id,
-      }
+      },
+      meetLink
     );
 
     // TODO: Save booking to database here

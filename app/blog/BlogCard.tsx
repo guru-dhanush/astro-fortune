@@ -27,7 +27,7 @@ const BlogCard = ({
         {/* Image */}
         <div className={compact ? "h-40" : "h-48"}>
           <img
-            src={image}
+            src={image?.trim() || "/astrologo.png"}
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
@@ -35,7 +35,9 @@ const BlogCard = ({
 
         {/* Content */}
         <div className="p-5 space-y-3">
-          <span className="text-xs font-medium text-emerald-600">{category}</span>
+          <span className="text-xs font-medium text-emerald-600">
+            {category}
+          </span>
           <p className="text-lg font-semibold flex justify-between items-center">
             {title}
             <span className="text-xl">↗</span>
