@@ -1,4 +1,4 @@
-import { getAllPostSlugs, getPostData } from "@/lib/posts";
+import { getAllPosts, getPostBySlug } from "@/lib/wordpress";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
@@ -7,21 +7,22 @@ import Testimonials from "@/components/testimonial";
 import LatestPosts from "@/components/home/LatestPosts";
 import Link from "next/link";
 import NewsLetterCard from "../NewsLetterCard";
-
-// Import highlight.js theme — GitHub Dark is a great default
-import "highlight.js/styles/github-dark.css";
 import SectionFutureCTA from "@/components/home/SectionFutureCTA";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{
+    slug: string;
+  }>;
 };
+
+export const revalidate = 60;
 
 /**
  * generateStaticParams — tells Next.js which slugs to pre-render at build time.
  */
 export async function generateStaticParams() {
-  const slugs = getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+  const posts = await getAllPosts(1, 100);
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 /**
@@ -29,7 +30,7 @@ export async function generateStaticParams() {
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostData(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return { title: "Post Not Found | Astrofortune" };
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  */
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getPostData(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -105,7 +106,7 @@ export default async function BlogPostPage({ params }: Props) {
         >
           {post.excerpt}
         </h2>
-        <div className="relative w-full max-w-[1280px] h-[560px] overflow-hidden rounded-lg">
+        <div className="relative w-full max-w-7xl h-140 overflow-hidden rounded-lg">
           <img
             src={post.image}
             alt={post.title}
@@ -121,10 +122,16 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Author & Date */}
           <div className="flex items-center gap-3 mb-10 pb-8 border-b border-gray-100">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200 shrink-0">
-              <img src="/kyataini.svg" alt={post.author} className="w-full h-full" />
+              <img
+                src="/kyataini.svg"
+                alt={post.author}
+                className="w-full h-full"
+              />
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-800">{post.author}</p>
+              <p className="text-sm font-semibold text-gray-800">
+                {post.author}
+              </p>
               <p className="text-xs text-gray-400">{formattedDate}</p>
             </div>
           </div>

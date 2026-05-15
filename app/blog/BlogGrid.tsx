@@ -1,19 +1,19 @@
-
 import BlogCard from "./BlogCard";
 import React from "react";
-import type { PostMeta } from "@/lib/posts";
+import type { PostMeta } from "@/lib/wordpress";
 import NewsLetterCard from "./NewsLetterCard";
 
 type BlogGridProps = {
   posts: PostMeta[];
 };
 
-
 const BlogGrid = ({ posts }: BlogGridProps) => {
   if (posts.length === 0) {
     return (
       <section className="max-w-7xl mx-auto px-6 py-16 text-center text-muted-foreground">
-        <p className="text-lg font-medium">No posts match your search or filter criteria.</p>
+        <p className="text-lg font-medium">
+          No posts match your search or filter criteria.
+        </p>
       </section>
     );
   }
