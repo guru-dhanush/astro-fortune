@@ -223,7 +223,6 @@ export default function BookingForm() {
         const priceStr = service.price.replace(/[₹,]/g, "");
         const amount = parseFloat(priceStr);
 
-        // Your Razorpay payment flow (unchanged)
         const createOrderRes = await fetch("/api/payment/create", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -390,7 +389,13 @@ export default function BookingForm() {
                       type="button"
                       disabled={past}
                       onClick={() => { setValue("date", day); setValue("time", ""); }}
-                      className={`w-9 h-9 rounded-full text-sm ${past ? "text-gray-300 cursor-not-allowed" : "hover:bg-gray-100"} ${selected ? "bg-[#7d6352] text-white font-semibold" : "text-gray-700"}`}
+                      className={`w-9 h-9 rounded-full text-sm transition-all ${
+                        past 
+                          ? "text-gray-400 bg-gray-50 cursor-not-allowed opacity-60" 
+                          : selected 
+                            ? "bg-[#7d6352] text-white font-semibold shadow-sm" 
+                            : "text-gray-700 hover:bg-gray-100"
+                      }`}
                     >
                       {day}
                     </button>
@@ -416,7 +421,7 @@ export default function BookingForm() {
                           type="button"
                           disabled={pastSlot}
                           onClick={() => setValue("time", slot)}
-                          className="rounded-2xl border py-2.5 text-sm transition-all"
+                          className={`rounded-2xl border py-2.5 text-sm transition-all ${pastSlot ? "cursor-not-allowed opacity-60" : ""}`}
                           style={{
                             backgroundColor: selectedTime === slot ? "#7d6352" : pastSlot ? "#f3f4f6" : "white",
                             color: selectedTime === slot ? "white" : pastSlot ? "#9ca3af" : "#374151",
