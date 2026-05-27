@@ -15,6 +15,10 @@ const AboutSection = ({
           About
         </Badge>
       ) : null}
+      <h1 className="text-5xl font-serif text-primary mb-6">
+        {/* Unlock clarity through astrological insight */}
+        Meet Katyani
+      </h1>
       <div className="flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-12 rounded-4xl mx-5 p-2">
         <img
           src="/katyaini-photo.svg"
