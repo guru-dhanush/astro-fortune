@@ -14,38 +14,35 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const testimonials = [
-  {
-    text: "Katyaini’s guidance brought clarity and peace during a difficult phase. Her readings were accurate, practical, and easy to understand.",
-    name: "Siddharth Rao",
-    role: "Business Analyst",
-  },
+{
+  text: "It was a great and comforting session with Katyani @Astrofortune. I must say her predictions were so accurate for my past, present, and future. It was a healing session as well, and she guided me with some remedies for a smooth life ahead.",
+  name: "Arti Ahuja",
+  // role: "Business Analyst",
+},
 
-  {
-    text: "The reading was surprisingly precise and gave me a lot of emotional clarity. I left the session feeling lighter and more focused.",
-    name: "Neha Kapoor",
-    role: "Marketing Strategist",
-  },
+{
+  text: "Katyani listens with great patience and connects the dots in a way that feels both practical and comforting. Her guidance is rooted in real-life understanding. She does not believe in creating unnecessary drama and gives genuine insights. She explains things with such clarity that even complex issues start to feel manageable. Thank you for an insightful session.",
+  name: "Surbhi Gupta",
+  // role: "Marketing Strategist",
+},
 
-  {
-    text: "I was unsure at first, but the session exceeded my expectations. It helped me make sense of a confusing situation.",
-    name: "Pooja Nair",
-    role: "HR Consultant",
-  },
-  {
-    text: "Very intuitive and calming experience. The insights were relevant and easy to apply in daily life.",
-    name: "Arjun Malhotra",
-    role: "Startup Founder",
-  },
-  {
-    text: "The session gave me a fresh perspective and renewed confidence. I appreciated the honesty and clarity.",
-    name: "Kavita Iyer",
-    role: "Content Writer",
-  },
-  {
-    text: "Thoughtful guidance and accurate observations. It felt like a meaningful conversation rather than a generic reading.",
-    name: "Amit Choudhary",
-    role: "Operations Manager",
-  },
+{
+  text: "I had such a lovely experience with Katyani. She has a very comforting presence and makes you feel at ease right away. What I really appreciate is how precise and logical she is. Unlike many astrologers, she does not just make vague statements—she explains everything clearly through the charts, and it all makes perfect sense. She is also very straightforward and honest, which I truly value. Everything she has said so far has been incredibly accurate, and I genuinely feel I can trust her guidance. I came away feeling lighter, clearer, and reassured after our consultation.",
+  name: "Neha Singh",
+  // role: "HR Consultant",
+},
+
+{
+  text: "Really liked my session with her! She's super easy to talk to, and her readings felt spot on. She gave me a lot of clarity and peace of mind. Totally recommend her if you're into astrology or just need some good guidance.",
+  name: "Megha Ruia",
+  // role: "Startup Founder",
+},
+
+{
+  text: "I'm generally cautious about astrologers since it's difficult to gauge their depth of knowledge, and inaccurate advice can be unsettling. However, Katyani was truly exceptional—her predictions were accurate, and her insights into the past were remarkably precise. I highly recommend her.",
+  name: "Shweta Shah",
+  // role: "Content Writer",
+},
 ];
 
 const Testimonials = () => {
@@ -94,14 +91,14 @@ const Testimonials = () => {
               <CarouselItem key={index} className="basis-2/3">
                 <Card
                   className={cn(
-                    "rounded-3xl transition-all duration-500 ease-out h-full ",
+                    "rounded-3xl transition-all duration-500 ease-out h-full min-h-105",
                     isActive
                       ? "scale-100 bg-primary text-primary-foreground shadow-2xl"
                       : "scale-90 bg-primary/60 text-primary-foreground/70 opacity-70",
                   )}
                 >
-                  <CardContent className="flex flex-col justify-between h-full text-center ">
-                    <div>
+                  <CardContent className="flex flex-col h-full text-center p-6 md:p-8">
+                    <div className="flex flex-col h-full">
                       {/* Quote icon */}
                       <Image
                         src="/home/testimonials-icon.svg"
@@ -112,16 +109,15 @@ const Testimonials = () => {
                       />
 
                       {/* Testimonial text */}
-                      <div className="flex justify-center">
-                        <p className="leading-7 mb-8 max-w-120 text-md md:text-xl lg:text-2xl text-white">
+                      <div className="flex justify-center flex-1 mt-4 mb-6">
+                        <p className="leading-7 max-w-120 text-sm md:text-base lg:text-lg text-white max-h-55 overflow-y-auto pr-1">
                           {item.text}
                         </p>
                       </div>
 
                       {/* Author */}
-                      <div>
+                      <div className="mt-auto">
                         <p className="font-semibold">{item.name}</p>
-                        <p className="text-sm opacity-70">{item.role}</p>
                       </div>
                     </div>
                   </CardContent>

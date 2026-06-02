@@ -19,7 +19,7 @@ const HeroSection = () => {
         <h1
           className="
     relative mx-auto
-    max-w-[90vw] sm:max-w-3xl
+    max-w-[90vw] sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl
     text-center font-bold
     text-[clamp(2.25rem,5vw,4.5rem)]
     leading-[110%] mt-5
@@ -27,7 +27,8 @@ const HeroSection = () => {
     before:content-['']
     before:absolute
     before:hidden sm:before:block
-    before:left-0 sm:before:-left-10 lg:before:-left-16
+    before:left-0 sm:before:-left-10 lg:before:-left-20
+
     before:top-1/2
     before:-translate-y-1/2
     before:w-8 lg:before:w-10
@@ -40,8 +41,7 @@ const HeroSection = () => {
     after:content-['']
     after:absolute
     after:hidden sm:after:block
-    after:right-0 sm:after:-right-10 lg:after:-right-16
-    after:top-1/2
+    after:right-0 sm:after:-right-10 lg:after:-right-20    after:top-1/2
     after:-translate-y-1/2
     after:w-8 lg:after:w-10
     after:h-8 lg:after:h-10
@@ -51,14 +51,14 @@ const HeroSection = () => {
     after:opacity-70
   "
         >
-          World&apos;s Most Accurate <br />
-          Astrology Engine.
+          Trusted Vedic Astrology Guidance for Life&apos;s Most Important
+          Decisions
         </h1>
 
         <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
-          Unravel the mysteries of life-journeys. Receive personalized and
-          real-time guidance for your life questions, detailed reports on
-          complex situations, and much more.
+          Gain deep insights into yourcareer, relationships, finances,marriage,
+          and life purpose throughpersonalized Vedic astrologyconsultations and
+          detailed birthchart analysis
         </p>
 
         <div className="flex gap-3 bg-background justify-center">
@@ -67,7 +67,7 @@ const HeroSection = () => {
           </Link>
           <Link href="/services">
             <Button size="lg" variant="outline">
-              Our Services
+              Explore Services
             </Button>
           </Link>
         </div>

@@ -112,7 +112,7 @@ const Header = () => {
       {/* Desktop CTA */}
       <Link href="/booking" className="hidden md:block">
         <Button size="lg" className="w-full text-base">
-          Book an appointment
+          Book a Consultation
         </Button>
       </Link>
 
@@ -186,7 +186,7 @@ const Header = () => {
             <div className="mt-auto border-t px-5 py-4">
               <Link href="/booking">
                 <Button className="w-full text-base" size="lg">
-                  Book an appointment
+                  Book a Consultation
                 </Button>
               </Link>
             </div>
