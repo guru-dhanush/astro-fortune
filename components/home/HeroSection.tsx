@@ -63,7 +63,7 @@ const HeroSection = () => {
 
         <div className="flex gap-3 bg-background justify-center">
           <Link href="/booking">
-            <Button size="lg">Book a Session</Button>
+            <Button size="lg">Book a Consultation</Button>
           </Link>
           <Link href="/services">
             <Button size="lg" variant="outline">
