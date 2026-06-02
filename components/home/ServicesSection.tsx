@@ -15,15 +15,15 @@ const ServicesSection = () => {
         challenging problems in your life
       </h2>
       <h2 className="flex md:hidden text-3xl font-semibold mb-6 lg:mb-8  text-center">
-        Our services
+        Explore Services
       </h2>
       <div className="hidden md:flex gap-2 my-5">
         <Link href="/booking">
-          <Button size="lg">Book a Session</Button>
+          <Button size="lg">Book a Consultation</Button>
         </Link>
         <Link href="/services">
           <Button size="lg" variant="outline">
-            Our Services
+            Explore Services
           </Button>
         </Link>
       </div>

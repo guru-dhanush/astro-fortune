@@ -5,8 +5,8 @@ const FUTURE_CTA = {
   title: "Gaze into Your Future",
   description:
     "Consult the cards and unlock the secrets of your destiny. Our gifted psychics await.",
-  primaryCta: "Book a session",
-  secondaryCta: "our services",
+  primaryCta: "Book a Consultation",
+  secondaryCta: "Explore Services",
 };
 
 const SectionFutureCTA = () => {
