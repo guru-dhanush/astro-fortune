@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 
 const FUTURE_CTA = {
-  title: "Gaze into Your Future",
+  title: "Trusted Vedic Astrology Guidance for Life’s Most Important Decisions",
   description:
-    "Consult the cards and unlock the secrets of your destiny. Our gifted psychics await.",
+    "Personalized birth chartanalysis and Vedicastrology guidance for love,career, marriage, finances,and life purpose.",
   primaryCta: "Book a Consultation",
   secondaryCta: "Explore Services",
 };
@@ -19,7 +19,7 @@ const SectionFutureCTA = () => {
         </h1>
 
         {/* Description */}
-        <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
+        <p className="text-sm m-3  mx-auto mb-6 max-w-[100vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
           {FUTURE_CTA.description}
         </p>
 

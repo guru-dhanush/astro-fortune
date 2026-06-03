@@ -1,12 +1,16 @@
 import { Badge } from "../ui/badge";
 import AboutStats from "./AboutStats";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const AboutSection = ({
   showbadge = true,
   showStats,
+  showButton,
 }: {
   showbadge?: boolean;
   showStats?: boolean;
+  showButton?: boolean;
 }) => {
   return (
     <section className="flex flex-col justify-center items-center p-2 py-10 md:p-10 ">
@@ -43,6 +47,16 @@ const AboutSection = ({
             If you&apos;re ready to move with purpose and divine timing,
             you&apos;re exactly where you&apos;re meant to be.
           </p>
+          {showButton ? (
+            <Link href="/booking" className="mt-10 self-center">
+              <Button
+                size="lg"
+                className="text-base flex flex-row items-center justify-center gap-2"
+              >
+                Book a Consultation
+              </Button>
+            </Link>
+          ) : null}
           {showStats ? <AboutStats /> : null}
         </div>
       </div>
