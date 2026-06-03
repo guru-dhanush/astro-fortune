@@ -11,7 +11,7 @@ const AboutPage = () => {
     <main className="w-full">
       <Header />
       <AboutHeader />
-      <AboutSection showbadge={false} />
+      <AboutSection showbadge={false} showButton={true} />
       <section className="py-10 px-4 max-w-5xl mx-auto">
         <AboutStats />
       </section>
