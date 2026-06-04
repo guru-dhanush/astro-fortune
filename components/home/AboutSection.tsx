@@ -26,7 +26,7 @@ const AboutSection = ({
           className="w-full lg:w-auto lg:max-w-sm rounded-3xl shrink-0"
         />
         <div className="max-w-2xl flex flex-col">
-          <h2 className="text-5xl font-bold text-primary mb-6 text-center leading-[1.1]">
+          <h2 className="text-4xl font-bold text-primary mb-6 text-center leading-[1.1]">
             Meet Katyani
           </h2>
           <p className="text-base leading-7 text-muted-foreground indent-4">

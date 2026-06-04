@@ -19,7 +19,7 @@ const LatestPosts = async () => {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-start my-10">
         <div>
-          <h2 className="text-3xl font-semibold">{LATEST_POSTS.title}</h2>
+          <h2 className="text-4xl font-bold text-primary mb-6">{LATEST_POSTS.title}</h2>
           <p className="mt-2 text-sm max-w-lg text-muted-foreground">
             {LATEST_POSTS.subtitle}
           </p>

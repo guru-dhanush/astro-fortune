@@ -54,7 +54,7 @@ const Testimonials = () => {
         Testimonials
       </Badge>
 
-      <h2 className="font-bold text-2xl lg:text-4xl mb-6 lg:mb-8 text-primary">
+      <h2 className="text-4xl font-bold text-primary mb-6">
         Don't Take your Words for Us
       </h2>
 

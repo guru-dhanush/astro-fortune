@@ -12,16 +12,17 @@ const BlogHeader = ({ query, onQueryChange }: BlogHeaderProps) => {
   return (
     <section className="text-center py-20 px-6 max-w-4xl mx-auto">
       <Badge variant="secondary" className="mb-6">
-        Get answers to your problems
+        Spiritual Wisdom & Guidance
       </Badge>
 
-      <h2 className="text-5xl font-serif text-primary mb-6">
-        Latest Cosmic Writings
+      <h2 className="text-4xl font-bold text-primary mb-6">
+        Spiritual Insights for Personal Growth & Self-Discovery
       </h2>
 
       <p className="text-muted-foreground max-w-xl mx-auto mb-10">
-        I share predictions, remedies, and deeper understandings of how
-        planetary energies shape our lives.
+        Explore astrology, numerology, tarot, compatibility, and spiritual wisdom
+        to gain clarity, confidence, and deeper understanding in every area of
+        life. Spiritual Wisdom & Guidance
       </p>
 
       <Input

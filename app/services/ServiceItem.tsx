@@ -17,11 +17,11 @@ const ServiceItem = ({
   reverse,
 }: ServiceItemProps) => {
   const router = useRouter();
-  
+
   const booknowClicked = (serviceTitle: string) => () => {
     localStorage.setItem("selectedService", serviceTitle);
     router.push("/booking");
-  }
+  };
   return (
     <section>
       <div
@@ -40,7 +40,7 @@ const ServiceItem = ({
 
         {/* Content */}
         <div
-          className={`space-y-4 lg:text-left ${
+          className={`space-y-4 text-center ${
             reverse ? "lg:order-1" : "lg:order-2"
           }`}
         >
@@ -49,13 +49,13 @@ const ServiceItem = ({
           {description.map((text, idx) => (
             <p
               key={idx}
-              className="text-sm text-muted-foreground max-w-md mx-auto lg:mx-0"
+              className="text-sm text-muted-foreground max-w-md mx-auto"
             >
               {text}
             </p>
           ))}
 
-          <Button size="lg" onClick={booknowClicked(title)}>
+          <Button size="lg" className="mx-auto" onClick={booknowClicked(title)}>
             Book Now
           </Button>
         </div>

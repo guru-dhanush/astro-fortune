@@ -4,15 +4,15 @@ const ContactHeader = () => {
   return (
     <section className="text-center py-20 px-6 max-w-4xl mx-auto">
       <Badge variant="secondary" className="mb-6">
-        Contact Us
+        Get In Touch
       </Badge>
 
-      <h2 className="text-5xl font-serif text-primary mb-4">
-        We’d love to hear from you
+      <h2 className="text-4xl font-bold text-primary mb-6">
+        Let&apos;s Begin Your Journey to Clarity
       </h2>
 
       <p className="text-muted-foreground">
-        Our friendly team is always here to chat.
+       Questions about consultations, astrology readings, or services? We&apos;d be happy to help.
       </p>
     </section>
   );
