@@ -7,10 +7,10 @@ const ServicesHeader = () => {
         Services
       </Badge>
 
-      <h1 className="text-5xl font-bold text-primary mb-6">
-        Discover effective solutions to the most challenging problems in your
-        life
-      </h1>
+      <h2 className="text-4xl font-bold text-primary mb-6">
+        Personalized Vedic astrology readings to help you navigate life&apos;s
+        most important decisions
+      </h2>
     </section>
   );
 };

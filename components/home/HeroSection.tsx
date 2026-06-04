@@ -16,11 +16,11 @@ const HeroSection = () => {
       </div>
 
       <div className="relative bg-background text-center pb-10">
-        <h1
+        <h2
           className="
     relative mx-auto
     max-w-[90vw] sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl
-    text-center font-bold
+    text-4xl font-bold text-primary mb-6
     text-[clamp(2.25rem,5vw,4.5rem)]
     leading-[110%] mt-5
 
@@ -53,7 +53,7 @@ const HeroSection = () => {
         >
           Trusted Vedic Astrology Guidance for Life&apos;s Most Important
           Decisions
-        </h1>
+        </h2>
 
         <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
           Gain deep insights into your career, relationships, finances, marriage

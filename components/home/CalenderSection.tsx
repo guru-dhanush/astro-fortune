@@ -63,7 +63,7 @@ const CalenderSection = () => {
       <Badge variant="secondary" className="mb-6">
         Calendar
       </Badge>
-      <h1 className="text-5xl font-bold text-primary mb-6 lg:mb-8">Hindu Calendar</h1>
+      <h2 className="text-4xl font-bold text-primary mb-6">Hindu Calendar</h2>
 
       <div className="w-full border border-primary/60 rounded-3xl p-5 md:p-5 lg:p-8 m-2 md:m-0">
         {/* Header */}
