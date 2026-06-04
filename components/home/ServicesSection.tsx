@@ -10,10 +10,10 @@ const ServicesSection = () => {
       <Badge variant="secondary" className="mb-4">
         Get answers to your problems
       </Badge>
-      <h2 className="hidden md:flex font-bold text-2xl lg:text-4xl text-primary  text-center mb-06 lg:mb-8">
+      <h1 className="hidden md:flex font-bold text-2xl lg:text-4xl text-primary  text-center mb-06 lg:mb-8">
         Experience deeply personalized astrological consultations designed to
         bring clarity, confidence, and alignment to every area of your life.
-      </h2>
+      </h1>
       <h2 className="flex md:hidden text-3xl font-semibold mb-6 lg:mb-8  text-center">
         Explore Services
       </h2>

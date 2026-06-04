@@ -7,10 +7,10 @@ const ServicesHeader = () => {
         Services
       </Badge>
 
-      <h2 className="text-5xl font-serif text-primary mb-6">
+      <h1 className="text-5xl font-bold text-primary mb-6">
         Discover effective solutions to the most challenging problems in your
         life
-      </h2>
+      </h1>
     </section>
   );
 };

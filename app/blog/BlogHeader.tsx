@@ -15,9 +15,9 @@ const BlogHeader = ({ query, onQueryChange }: BlogHeaderProps) => {
         Get answers to your problems
       </Badge>
 
-      <h2 className="text-5xl font-serif text-primary mb-6">
+      <h1 className="text-5xl font-bold text-primary mb-6">
         Latest Cosmic Writings
-      </h2>
+      </h1>
 
       <p className="text-muted-foreground max-w-xl mx-auto mb-10">
         I share predictions, remedies, and deeper understandings of how

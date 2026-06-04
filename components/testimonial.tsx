@@ -54,9 +54,9 @@ const Testimonials = () => {
         Testimonials
       </Badge>
 
-      <h2 className="font-bold text-2xl lg:text-4xl mb-6 lg:mb-8 text-primary">
+      <h1 className="text-5xl font-bold text-primary lg:text-4xl mb-6 lg:mb-8">
         Don't Take your Words for Us
-      </h2>
+      </h1>
 
       <Carousel
         setApi={setApi}

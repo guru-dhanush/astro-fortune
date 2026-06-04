@@ -56,9 +56,9 @@ const HeroSection = () => {
         </h1>
 
         <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
-          Gain deep insights into yourcareer, relationships, finances,marriage,
-          and life purpose throughpersonalized Vedic astrologyconsultations and
-          detailed birthchart analysis
+          Gain deep insights into your career, relationships, finances, marriage
+          and life purpose through personalized Vedic astrology consultations
+          and detailed birthchart analysis
         </p>
 
         <div className="flex gap-3 bg-background justify-center">
