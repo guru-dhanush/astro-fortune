@@ -21,15 +21,15 @@ const AboutSection = ({
       ) : null}
       <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 lg:gap-12 rounded-4xl mx-5 p-2">
         <img
-          src="/katyaini-photo.svg"
-          alt="katyaini"
+          src="/Katyani-photo.svg"
+          alt="Katyani"
           className="w-full lg:w-auto lg:max-w-sm rounded-3xl shrink-0"
         />
         <div className="max-w-2xl flex flex-col">
-          <h2 className="text-4xl font-bold text-primary mb-6 text-center leading-[1.1]">
+          <h2 className="text-4xl font-bold text-heading mb-6 text-center leading-[1.1]">
             Meet Katyani
           </h2>
-          <p className="text-base leading-7 text-muted-foreground indent-4">
+          <p className="text-base leading-7 text-subheading indent-4">
             My journey bridges two worlds — the intellectual and the mystical. I
             discovered the esoteric at 11 and trained in Vedic astrology at 21,
             eventually earning gold medals in astrology. Even as I completed my

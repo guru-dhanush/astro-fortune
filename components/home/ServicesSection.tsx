@@ -10,7 +10,7 @@ const ServicesSection = () => {
       <Badge variant="secondary" className="mb-4">
         Get answers to your problems
       </Badge>
-      <h2 className="text-4xl font-bold text-primary mb-6 text-center">
+      <h2 className="text-4xl font-bold text-heading mb-6 text-center">
         Experience deeply personalized astrological consultations designed to
         bring clarity, confidence, and alignment to every area of your life.
       </h2>
@@ -41,8 +41,8 @@ const ServicesSection = () => {
                 className="h-56 w-full object-cover p-2 rounded-3xl"
               />
 
-              <div className="p-6 flex flex-col flex-1 text-[#6a5c52]">
-                <h2 className="text-lg font-semibold text-primary mb-6 text-center">
+              <div className="p-6 flex flex-col flex-1 text-subheading">
+                <h2 className="text-lg font-semibold text-heading mb-6 text-center">
                   {service.title}
                 </h2>
 
@@ -54,7 +54,7 @@ const ServicesSection = () => {
 
                 <a
                   href="#"
-                  className="mt-auto text-xs lowercase text-[#9c8a7a] self-end hover:underline"
+                  className="mt-auto text-xs lowercase text-accent self-end hover:underline"
                 >
                   learn more
                 </a>

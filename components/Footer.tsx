@@ -5,7 +5,7 @@ import { Input } from "./ui/input";
 const FOOTER_DATA = {
   brand: {
     name: "astrofortune",
-    tagline: "BY KATYAINI",
+    tagline: "BY KATYANI",
   },
   navigation: ["home", "about", "services", "blog", "contact"],
   newsletter: {
@@ -13,7 +13,6 @@ const FOOTER_DATA = {
     placeholder: "Enter your email",
     cta: "Subscribe",
   },
-  copyright: "© 2025 astrofortune. All rights reserved.",
   social: [
     { name: "Facebook", icon: "/icons/facebook.svg" },
     { name: "Twitter", icon: "/icons/twitter.svg" },
@@ -23,6 +22,8 @@ const FOOTER_DATA = {
 };
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="w-full pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6 my-12">
@@ -53,7 +54,9 @@ const Footer = () => {
 
         {/* Right */}
         <div className="flex-1 max-w-md lg:max-w-sm space-y-4">
-          <h4 className="font-medium">{FOOTER_DATA.newsletter.title}</h4>
+          <h4 className="font-medium text-heading">
+            {FOOTER_DATA.newsletter.title}
+          </h4>
 
           <div className="flex  gap-3">
             <Input
@@ -76,11 +79,11 @@ const Footer = () => {
       {/* BOTTOM */}
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-6 md:gap-0 items-center justify-between">
         <p className="text-sm text-center md:text-left">
-          {FOOTER_DATA.copyright}
+          © {currentYear} astrofortune. All rights reserved.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <span className="text-sm">Follow us</span>
+          <span className="text-sm text-subheading">Follow us</span>
 
           <div className="flex gap-3">
             {FOOTER_DATA.social.map((item) => (
@@ -88,7 +91,7 @@ const Footer = () => {
                 key={item.name}
                 href="#"
                 aria-label={item.name}
-                className="w-9 h-9 rounded-full border flex items-center justify-center"
+                className="w-9 h-9 rounded-full border border-secondary text-accent flex items-center justify-center hover:bg-secondary/10"
               >
                 <img src={item.icon} alt={item.name} className="w-4 h-4" />
               </a>

@@ -19,10 +19,10 @@ const AboutStats = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center">
         {stats.map((stat, idx) => (
           <div key={idx}>
-            <p className="text-5xl font-bold font-serif text-primary">
+            <p className="text-5xl font-bold font-serif text-heading">
               {stat.value}
             </p>
-            <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
+            <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-subheading">
               {stat.label}
             </p>
           </div>

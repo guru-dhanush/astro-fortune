@@ -4,7 +4,7 @@ date: "2023-11-22"
 slug: "reading-tarot-cards"
 excerpt: "Discover how tarot cards reveal hidden truths and guide important decisions — from the structure of the deck to interpreting your first spread."
 category: "Tarot Wisdom"
-author: "Katyaini"
+author: "Katyani"
 image: "/home/posts/tarot.png"
 ---
 
@@ -14,30 +14,32 @@ Tarot is a system of **78 illustrated cards** used for reflection, insight, and 
 
 Contrary to popular belief, tarot doesn't predict a fixed future. Instead, it illuminates **current energies, unconscious patterns, and potential outcomes** — empowering you to make more conscious choices.
 
-> The cards don't tell you what *will* happen. They show you what's happening beneath the surface, so you can shape what comes next.
+> The cards don't tell you what _will_ happen. They show you what's happening beneath the surface, so you can shape what comes next.
 
 ## The Structure of a Tarot Deck
 
 A standard tarot deck has **78 cards** divided into two main sections:
 
 ### The Major Arcana (22 cards)
+
 These represent **major life themes, karmic forces, and soul lessons** — the big picture of your journey.
 
 They begin with **0 – The Fool** (the soul at the start of its journey) and end with **XXI – The World** (completion and integration).
 
 Key Major Arcana cards and their core meanings:
 
-| Card | Core Theme |
-|------|------------|
-| The Fool | New beginnings, leap of faith |
+| Card               | Core Theme                           |
+| ------------------ | ------------------------------------ |
+| The Fool           | New beginnings, leap of faith        |
 | The High Priestess | Intuition, mystery, the subconscious |
-| The Tower | Sudden upheaval, revelation |
-| The Star | Hope, healing, renewal |
-| The Moon | Illusion, fear, the unknown |
-| Judgement | Awakening, reckoning, rebirth |
-| The World | Completion, wholeness, achievement |
+| The Tower          | Sudden upheaval, revelation          |
+| The Star           | Hope, healing, renewal               |
+| The Moon           | Illusion, fear, the unknown          |
+| Judgement          | Awakening, reckoning, rebirth        |
+| The World          | Completion, wholeness, achievement   |
 
 ### The Minor Arcana (56 cards)
+
 These reflect the **everyday events, emotions, and situations** of daily life, divided into four suits:
 
 ```
@@ -54,6 +56,7 @@ Each suit runs from **Ace (pure potential)** through **10 (completion)**, follow
 A tarot reading begins with a **question or intention** — an area of life you want clarity on. The reader then shuffles the cards (often while holding the question in mind) and lays them out in a **spread** — a specific pattern where each position has a defined meaning.
 
 The reader interprets each card through:
+
 - The card's **traditional meaning**
 - Whether it appears **upright or reversed**
 - Its **position** in the spread
@@ -62,18 +65,22 @@ The reader interprets each card through:
 ## Common Tarot Spreads
 
 ### 🃏 One-Card Draw
+
 **Best for:** Daily guidance, a quick answer, simple yes/no clarity.
 Draw a single card and sit with its message for the day.
 
 ### 🃏🃏🃏 Three-Card Spread
+
 **Best for:** Understanding a situation holistically.
 
 ```
 [Past] — [Present] — [Future]
 ```
+
 Or alternatively: **[Situation] — [Action] — [Outcome]**
 
 ### 🃏 The Celtic Cross (10 cards)
+
 **Best for:** Deep dives into complex situations — relationships, career crossroads, life direction.
 
 The Celtic Cross is the most classic spread in tarot, covering the core issue, influences, hopes, fears, and the likely outcome across 10 positions.
@@ -81,11 +88,13 @@ The Celtic Cross is the most classic spread in tarot, covering the core issue, i
 ## Upright vs. Reversed Cards
 
 When a card appears **upside down** (reversed), its energy is typically:
+
 - Blocked, internalized, or turned inward
 - A shadow expression of the card's upright meaning
 - An invitation to look at where that energy is being resisted
 
 **Example:**
+
 - **The Sun upright** — Joy, success, confidence, vitality
 - **The Sun reversed** — Clouded optimism, delays, inner blocks to happiness
 
@@ -120,6 +129,7 @@ Learning tarot is a practice, not a destination. Even experienced readers are al
 ## Tarot and Decision-Making
 
 Tarot is particularly powerful when facing:
+
 - **Career crossroads** — which path aligns with your authentic self?
 - **Relationship questions** — what am I not seeing clearly?
 - **Major life changes** — what energy am I carrying into this new chapter?

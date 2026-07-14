@@ -44,13 +44,10 @@ const ServiceItem = ({
             reverse ? "lg:order-1" : "lg:order-2"
           }`}
         >
-          <h2 className="text-2xl text-primary">{title}</h2>
+          <h2 className="text-2xl text-heading">{title}</h2>
 
           {description.map((text, idx) => (
-            <p
-              key={idx}
-              className="text-sm text-muted-foreground max-w-md mx-auto"
-            >
+            <p key={idx} className="text-sm text-subheading max-w-md mx-auto">
               {text}
             </p>
           ))}

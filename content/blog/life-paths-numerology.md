@@ -4,7 +4,7 @@ date: "2023-12-06"
 slug: "life-paths-numerology"
 excerpt: "Explore the significance of numbers in your life and how to calculate your personal life path number to unlock your true potential."
 category: "Numerology"
-author: "Katyaini"
+author: "Katyani"
 image: "/home/posts/numerology.png"
 ---
 
@@ -34,17 +34,17 @@ Life Path Number = 6
 
 ## The 9 Life Path Numbers at a Glance
 
-| Number | Archetype | Core Theme |
-|--------|-----------|------------|
-| 1 | The Leader | Independence, ambition, new beginnings |
-| 2 | The Peacemaker | Harmony, cooperation, intuition |
-| 3 | The Creator | Expression, joy, creativity |
-| 4 | The Builder | Stability, discipline, hard work |
-| 5 | The Adventurer | Freedom, change, curiosity |
-| 6 | The Nurturer | Love, responsibility, healing |
-| 7 | The Seeker | Wisdom, introspection, spirituality |
-| 8 | The Achiever | Power, abundance, ambition |
-| 9 | The Humanitarian | Compassion, completion, service |
+| Number | Archetype        | Core Theme                             |
+| ------ | ---------------- | -------------------------------------- |
+| 1      | The Leader       | Independence, ambition, new beginnings |
+| 2      | The Peacemaker   | Harmony, cooperation, intuition        |
+| 3      | The Creator      | Expression, joy, creativity            |
+| 4      | The Builder      | Stability, discipline, hard work       |
+| 5      | The Adventurer   | Freedom, change, curiosity             |
+| 6      | The Nurturer     | Love, responsibility, healing          |
+| 7      | The Seeker       | Wisdom, introspection, spirituality    |
+| 8      | The Achiever     | Power, abundance, ambition             |
+| 9      | The Humanitarian | Compassion, completion, service        |
 
 ## Master Numbers: 11, 22 & 33
 
@@ -65,9 +65,9 @@ Your Life Path Number touches every dimension of your life:
 
 ## Common Misconceptions
 
-- ❌ *"A bad number means a bad life."* — Every number has light and shadow sides. Awareness is the key to working with yours.
-- ❌ *"Only my Life Path matters."* — Numerology is a full system. Your Expression, Soul Urge, and Personal Year numbers add crucial layers.
-- ❌ *"Numbers don't change."* — Your core Life Path stays fixed, but **Personal Year numbers** shift annually, creating cycles of growth and rest.
+- ❌ _"A bad number means a bad life."_ — Every number has light and shadow sides. Awareness is the key to working with yours.
+- ❌ _"Only my Life Path matters."_ — Numerology is a full system. Your Expression, Soul Urge, and Personal Year numbers add crucial layers.
+- ❌ _"Numbers don't change."_ — Your core Life Path stays fixed, but **Personal Year numbers** shift annually, creating cycles of growth and rest.
 
 ## Your Personal Year in 2023
 

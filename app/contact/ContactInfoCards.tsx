@@ -1,11 +1,9 @@
-import { subtle } from "crypto";
-
 const cards = [
   {
     icon: "/mail.svg",
     title: "Email",
     text: "For inquiries and consultations.",
-    value: "katyani@astrofortuneonline.com",
+    value: "contact@astrofortunebykatyaini.com",
   },
   // {
   //   icon: "/location.svg",
@@ -31,19 +29,21 @@ const ContactInfoCards = () => {
           key={idx}
           className="bg-brown-50 border border-brown-100 rounded-2xl p-8 text-center w-full sm:w-105"
         >
-          <div className="w-10 h-10 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
-            <img src={card.icon} className="w-5 h-5 text-primary" />
+          <div className="w-10 h-10 mx-auto mb-4 rounded-full bg-background border border-secondary/20 flex items-center justify-center text-accent">
+            <img src={card.icon} className="w-5 h-5 text-accent" />
           </div>
 
-          <h2 className="text-lg font-semibold text-primary mb-6 text-center">{card.title}</h2>
-          <p className="text-sm text-muted-foreground mb-2">{card.text}</p>
+          <h2 className="text-lg font-semibold text-heading mb-6 text-center">
+            {card.title}
+          </h2>
+          <p className="text-sm text-subheading mb-2">{card.text}</p>
           {card.subtext && (
-            <p className="text-sm text-muted-foreground mb-2">{card.subtext}</p>
+            <p className="text-sm text-subheading mb-2">{card.subtext}</p>
           )}
           {card.subsubtext && (
-            <p className="text-sm text-muted-foreground mb-2">{card.subsubtext}</p>
+            <p className="text-sm text-subheading mb-2">{card.subsubtext}</p>
           )}
-          <p className="text-sm font-medium text-primary">{card.value}</p>
+          <p className="text-sm font-medium text-accent">{card.value}</p>
         </div>
       ))}
     </section>

@@ -7,11 +7,11 @@ const AboutHeader = () => {
         About
       </Badge>
 
-      {/* <h1 className="text-5xl font-serif text-primary mb-6">
+      {/* <h1 className="text-5xl font-serif text-heading mb-6">
         Meet Katyani 
       </h1>
 
-      <p className="mb-6 text-center text-muted-foreground">
+      <p className="mb-6 text-center text-subheading">
         Personalized guidance to help you decide better, act at the right time,
         and move forward with confidence.
       </p> */}

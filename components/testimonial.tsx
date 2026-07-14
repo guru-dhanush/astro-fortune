@@ -54,14 +54,11 @@ const Testimonials = () => {
         Testimonials
       </Badge>
 
-      <h2 className="text-4xl font-bold text-primary mb-6">
+      <h2 className="text-4xl font-bold text-heading mb-6">
         Don't Take your Words for Us
       </h2>
 
-      <Carousel
-        setApi={setApi}
-        opts={{ align: "center", loop: true }}
-      >
+      <Carousel setApi={setApi} opts={{ align: "center", loop: true }}>
         <CarouselContent>
           {testimonials.map((item, index) => {
             const isActive = index === activeIndex;
@@ -72,8 +69,8 @@ const Testimonials = () => {
                   className={cn(
                     "rounded-3xl transition-all duration-500 ease-out h-full",
                     isActive
-                      ? "scale-100 bg-primary text-primary-foreground shadow-2xl"
-                      : "scale-90 bg-primary/60 text-primary-foreground/70 opacity-70",
+                      ? "scale-100 bg-testimonial text-white shadow-2xl"
+                      : "scale-90 bg-testimonial/60 text-white/70 opacity-70",
                   )}
                 >
                   <CardContent className="flex flex-col text-center p-6 md:p-8">
@@ -97,7 +94,9 @@ const Testimonials = () => {
                       {item.text}
                     </p>
 
-                    <p className="mt-auto font-semibold">{item.name}</p>
+                    <p className="mt-auto font-semibold text-testimonial-name">
+                      {item.name}
+                    </p>
                   </CardContent>
                 </Card>
               </CarouselItem>
@@ -108,12 +107,12 @@ const Testimonials = () => {
         <CarouselPrevious
           size="icon-lg"
           variant="default"
-          className="top-[calc(100%+2.5rem)] left-1/2 -translate-x-full border-0 w-10 h-10"
+          className="top-[calc(100%+2.5rem)] left-1/2 -translate-x-full border-0 w-10 h-10 bg-accent text-white hover:bg-primary-hover"
         />
         <CarouselNext
           size="icon-lg"
           variant="default"
-          className="top-[calc(100%+2.5rem)] left-1/2 translate-x-4 border-0 w-10 h-10"
+          className="top-[calc(100%+2.5rem)] left-1/2 translate-x-4 border-0 w-10 h-10 bg-accent text-white hover:bg-primary-hover"
         />
       </Carousel>
     </section>
