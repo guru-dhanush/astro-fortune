@@ -4,7 +4,7 @@ date: "2023-11-15"
 slug: "decoding-zodiac-charts"
 excerpt: "Unlock the secrets of the stars and learn how to interpret astrological charts like a pro — from the Big Three to houses, aspects, and beyond."
 category: "Astrology"
-author: "Katyaini"
+author: "Katyani"
 image: "/home/posts/zodiac-chart.png"
 ---
 
@@ -15,6 +15,7 @@ A **birth chart** (also called a natal chart) is a snapshot of the sky at the ex
 Think of it as your personal cosmic fingerprint — completely unique to you, and rich with information about your personality, strengths, life themes, and soul's purpose.
 
 To generate your chart, you need three things:
+
 ```
 📅 Date of birth
 🕐 Time of birth (as accurate as possible)
@@ -28,32 +29,35 @@ To generate your chart, you need three things:
 Every birth chart analysis begins with **the Big Three**:
 
 ### ☀️ Sun Sign — Your Core Identity
+
 The sign the Sun occupied on your birthday. This is what most people know as their "zodiac sign." It represents your **ego, conscious self, and life purpose**.
 
 ### 🌙 Moon Sign — Your Emotional World
+
 The sign the Moon was in at your birth. Often invisible to the outside world, the Moon sign governs your **inner emotional landscape, instincts, and what you need to feel secure**.
 
 ### ⬆️ Rising Sign (Ascendant) — Your Outer Mask
+
 The zodiac sign rising on the eastern horizon at your birth moment. This is the **face you show the world** — your appearance, first impressions, and the lens through which you experience life.
 
 ## The 12 Houses: The Stage of Your Life
 
 The birth chart is divided into 12 houses, each governing a different life domain. The **sign on the cusp** of each house and any **planets inside** it shape how that area of life plays out.
 
-| House | Domain |
-|-------|--------|
-| 1st | Self, appearance, identity |
-| 2nd | Money, values, possessions |
-| 3rd | Communication, siblings, short travel |
-| 4th | Home, roots, family, inner world |
-| 5th | Creativity, romance, children, play |
-| 6th | Health, daily routines, work habits |
-| 7th | Partnerships, marriage, open enemies |
-| 8th | Transformation, shared resources, death & rebirth |
-| 9th | Philosophy, higher education, long travel |
-| 10th | Career, public reputation, life goals |
-| 11th | Community, friendships, hopes & ideals |
-| 12th | The unconscious, hidden matters, spirituality |
+| House | Domain                                            |
+| ----- | ------------------------------------------------- |
+| 1st   | Self, appearance, identity                        |
+| 2nd   | Money, values, possessions                        |
+| 3rd   | Communication, siblings, short travel             |
+| 4th   | Home, roots, family, inner world                  |
+| 5th   | Creativity, romance, children, play               |
+| 6th   | Health, daily routines, work habits               |
+| 7th   | Partnerships, marriage, open enemies              |
+| 8th   | Transformation, shared resources, death & rebirth |
+| 9th   | Philosophy, higher education, long travel         |
+| 10th  | Career, public reputation, life goals             |
+| 11th  | Community, friendships, hopes & ideals            |
+| 12th  | The unconscious, hidden matters, spirituality     |
 
 ## The Planets: Each With Its Own Voice
 
@@ -72,7 +76,7 @@ Every planet in your chart speaks to a different part of your psyche:
 
 ## Aspects: How Planets Talk to Each Other
 
-A planet's placement tells you *what* energy is present. **Aspects** — the angular relationships between planets — tell you *how* those energies interact.
+A planet's placement tells you _what_ energy is present. **Aspects** — the angular relationships between planets — tell you _how_ those energies interact.
 
 ```
 ☌ Conjunction (0°)    — Intensified, blended energy

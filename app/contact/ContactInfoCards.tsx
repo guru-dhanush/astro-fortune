@@ -5,7 +5,7 @@ const cards = [
     icon: "/mail.svg",
     title: "Email",
     text: "For inquiries and consultations.",
-    value: "katyani@astrofortuneonline.com",
+    value: "contact@astrofortunebykatyaini.com",
   },
   // {
   //   icon: "/location.svg",

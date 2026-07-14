@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog | Astrofortune",
   description:
-    "Read our latest articles on Vedic astrology, horoscopes, planetary movements, and cosmic guidance from the Katyaini.",
+    "Read our latest articles on Vedic astrology, horoscopes, planetary movements, and cosmic guidance from the Katyani.",
 };
 
 export const revalidate = 60;

@@ -5,7 +5,7 @@ import { Input } from "./ui/input";
 const FOOTER_DATA = {
   brand: {
     name: "astrofortune",
-    tagline: "BY KATYAINI",
+    tagline: "BY KATYANI",
   },
   navigation: ["home", "about", "services", "blog", "contact"],
   newsletter: {

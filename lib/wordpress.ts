@@ -45,7 +45,9 @@ const fetchWP = async <T>(path: string): Promise<T> => {
   });
 
   if (!res.ok) {
-    throw new Error(`WordPress API request failed: ${res.status} ${res.statusText}`);
+    throw new Error(
+      `WordPress API request failed: ${res.status} ${res.statusText}`,
+    );
   }
 
   return res.json() as Promise<T>;
@@ -57,17 +59,21 @@ export async function getCategories(): Promise<WordPressCategory[]> {
 
 const stripHtml = (html: string) => html.replace(/<[^>]+>/g, "").trim();
 
-const normalizePost = (post: WordPressPost, categoryMap: Record<number, string>): Post => {
+const normalizePost = (
+  post: WordPressPost,
+  categoryMap: Record<number, string>,
+): Post => {
   const categories = post.categories ?? [];
   const categoryNames = categories
     .map((categoryId) => categoryMap[categoryId])
     .filter(Boolean);
 
-  const author = typeof post.author === "object"
-    ? post.author?.name ?? "Katyaini"
-    : typeof post.author === "string"
-    ? post.author
-    : "Katyaini";
+  const author =
+    typeof post.author === "object"
+      ? (post.author?.name ?? "Katyani")
+      : typeof post.author === "string"
+        ? post.author
+        : "Katyani";
 
   const featuredImage = post.jetpack_featured_media_url?.trim();
 
@@ -78,19 +84,27 @@ const normalizePost = (post: WordPressPost, categoryMap: Record<number, string>)
     excerpt: stripHtml(post.excerpt?.rendered ?? ""),
     category: categoryNames.length > 0 ? categoryNames.join(", ") : "General",
     author,
-    image: featuredImage && featuredImage.length > 0 ? featuredImage : "/astrologo.png",
+    image:
+      featuredImage && featuredImage.length > 0
+        ? featuredImage
+        : "/astrologo.png",
     categories,
     contentHtml: post.content?.rendered ?? "",
   };
 };
 
-export async function getAllPosts(page = 1, perPage = 100): Promise<PostMeta[]> {
+export async function getAllPosts(
+  page = 1,
+  perPage = 100,
+): Promise<PostMeta[]> {
   const [posts, categories] = await Promise.all([
     fetchWP<WordPressPost[]>(`/posts?per_page=${perPage}&page=${page}`),
     getCategories(),
   ]);
 
-  const categoryMap = Object.fromEntries(categories.map((category) => [category.id, category.name]));
+  const categoryMap = Object.fromEntries(
+    categories.map((category) => [category.id, category.name]),
+  );
 
   return posts
     .map((post) => normalizePost(post, categoryMap))
@@ -108,7 +122,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     return null;
   }
 
-  const categoryMap = Object.fromEntries(categories.map((category) => [category.id, category.name]));
+  const categoryMap = Object.fromEntries(
+    categories.map((category) => [category.id, category.name]),
+  );
 
   return normalizePost(post, categoryMap);
 }

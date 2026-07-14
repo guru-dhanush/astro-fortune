@@ -4,7 +4,7 @@ date: "2023-11-29"
 slug: "love-zodiac-signs-compatibility"
 excerpt: "Understand how planetary energies influence relationships and learn what truly makes two signs click — beyond just Sun sign pairings."
 category: "Cosmic Compatibility"
-author: "Katyaini"
+author: "Katyani"
 image: "/home/posts/love-zodiac.png"
 ---
 
@@ -23,29 +23,37 @@ When reading romantic compatibility, astrologers pay close attention to:
 - **Moon** — Your emotional needs and what makes you feel safe and seen
 - **7th House** — The house of partnerships; its ruler and any planets within it shape your relationship patterns
 
-> A strong Venus-Mars connection between two charts is often the spark. A Moon connection is what makes love *last*.
+> A strong Venus-Mars connection between two charts is often the spark. A Moon connection is what makes love _last_.
 
 ## Compatibility by Element
 
 The zodiac's 12 signs are grouped into **four elements**, and elemental compatibility forms the foundation of any pairing:
 
 ### 🔥 Fire Signs — Aries, Leo, Sagittarius
+
 Passionate, spontaneous, and adventurous. Fire signs fall in love fast and love intensely.
+
 - **Best with:** Other Fire signs or Air signs (Gemini, Libra, Aquarius) who fan the flames.
 - **Challenge with:** Water signs, whose emotional depth can overwhelm Fire's need for freedom.
 
 ### 🌍 Earth Signs — Taurus, Virgo, Capricorn
+
 Loyal, grounded, and deeply sensual. Earth signs love through acts of service and reliability.
+
 - **Best with:** Other Earth signs or Water signs (Cancer, Scorpio, Pisces) who add emotional richness.
 - **Challenge with:** Fire signs, whose unpredictability clashes with Earth's need for stability.
 
 ### 🌬️ Air Signs — Gemini, Libra, Aquarius
+
 Intellectually driven, communicative, and socially magnetic. Air signs fall in love with minds first.
+
 - **Best with:** Other Air signs or Fire signs who match their energy and enthusiasm.
 - **Challenge with:** Earth signs, who may find Air's detachment emotionally unsatisfying.
 
 ### 🌊 Water Signs — Cancer, Scorpio, Pisces
+
 Deeply intuitive, emotionally complex, and devoted. Water signs love with their whole soul.
+
 - **Best with:** Other Water signs or Earth signs who provide the security they crave.
 - **Challenge with:** Air signs, whose rationality can leave Water feeling emotionally unseen.
 
@@ -68,6 +76,7 @@ Deeply intuitive, emotionally complex, and devoted. Water signs love with their 
 A Sun sign pairing is just the beginning. Two people with "incompatible" Sun signs can have deeply harmonious charts if their Moons, Venuses, and rising signs align. This is why a **Synastry reading** — comparing two full birth charts — gives a far more accurate picture.
 
 Key synastry aspects to look for:
+
 ```
 ✅ Venus conjunct Mars       — Magnetic attraction
 ✅ Moon trine Moon           — Emotional ease and comfort
@@ -78,7 +87,7 @@ Key synastry aspects to look for:
 
 ## Love Timing: Transits and Relationships
 
-The planets don't just describe *who* you're compatible with — they also reveal *when* love is most likely to arrive or deepen.
+The planets don't just describe _who_ you're compatible with — they also reveal _when_ love is most likely to arrive or deepen.
 
 - **Jupiter transiting your 7th House** — A major window for meeting significant partners
 - **Venus Return** — Your annual reset for love and values

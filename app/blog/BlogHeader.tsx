@@ -16,7 +16,7 @@ const BlogHeader = ({ query, onQueryChange }: BlogHeaderProps) => {
       </Badge>
 
       <h2 className="text-4xl font-bold text-primary mb-6">
-        Spiritual Insights for Personal Growth & Self-Discovery
+        Spiritual Insights for Personal Growth and <br/>Self Discovery
       </h2>
 
       <p className="text-muted-foreground max-w-xl mx-auto mb-10">

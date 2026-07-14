@@ -12,7 +12,7 @@ export const LATEST_POSTS: LatestPostType = {
       description:
         "Explore the significance of numbers in your life and how to calculate your personal life.",
       image: "/home/posts/numerology.png",
-      author: "Katyaini",
+      author: "Katyani",
       date: "6 Dec 2023",
     },
     {
@@ -21,7 +21,7 @@ export const LATEST_POSTS: LatestPostType = {
       description:
         "Understand how planetary energies influence relationships and learn what truly makes two signs click.",
       image: "/home/posts/love-zodiac.png",
-      author: "Katyaini",
+      author: "Katyani",
       date: "29 Nov 2023",
     },
     {
@@ -30,7 +30,7 @@ export const LATEST_POSTS: LatestPostType = {
       description:
         "Unlock the secrets of the stars and learn how to interpret astrological charts like a pro.",
       image: "/home/posts/zodiac-chart.png",
-      author: "Katyaini",
+      author: "Katyani",
       date: "15 Nov 2023",
     },
     {
@@ -39,7 +39,7 @@ export const LATEST_POSTS: LatestPostType = {
       description:
         "Discover how tarot cards reveal hidden truths and guide important decisions.",
       image: "/home/posts/tarot.png",
-      author: "Katyaini",
+      author: "Katyani",
       date: "22 Nov 2023",
     },
   ],
