@@ -23,7 +23,7 @@ const BlogCard = ({
 }: BlogCardProps) => {
   return (
     <Link href={slug ? `/blog/${slug}` : "/blog"} className="group block">
-      <article className="border border-[#EAECF0] rounded-2xl overflow-hidden bg-white h-full transition-shadow duration-300 hover:shadow-lg">
+      <article className="border border-border rounded-2xl overflow-hidden bg-white h-full transition-shadow duration-300 hover:shadow-lg">
         {/* Image */}
         <div className={compact ? "h-40" : "h-48"}>
           <img
@@ -38,9 +38,9 @@ const BlogCard = ({
           <span className="text-xs font-medium text-emerald-600">
             {category}
           </span>
-          <p className="text-lg font-semibold flex justify-between items-center">
+          <p className="text-lg font-semibold text-heading flex justify-between items-center">
             {title}
-            <span className="text-xl">↗</span>
+            <span className="text-xl text-accent">↗</span>
           </p>
 
           <p className="text-sm text-black/70 line-clamp-2">{description}</p>

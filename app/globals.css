@@ -27,13 +27,13 @@
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
+  --color-accent: var(--theme-accent);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
+  --color-primary: var(--theme-primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -58,16 +58,43 @@
   --color-brown-700: var(--brown-700);
   --color-brown-800: var(--brown-800);
   --color-brown-900: var(--brown-900);
+  --color-heading: var(--theme-heading);
+  --color-subheading: var(--theme-subheading);
+  --color-primary-hover: var(--theme-primary-hover);
+  --color-secondary: var(--theme-secondary);
+  --color-testimonial: var(--theme-testimonial);
+  --color-testimonial-name: var(--theme-testimonial-name);
 }
 
 :root {
+  --color-heading: #615145;
+  --color-subheading: #7B726B;
+  --color-primary-btn-bg: #6B5A4E;
+  --color-primary-btn-text: #FFFFFF;
+  --color-primary-btn-hover-bg: #685548;
+  --color-secondary-btn-border: #6B5A4E;
+  --color-secondary-btn-text: #6B5A4E;
+  --color-secondary-btn-bg: transparent;
+  --color-testimonial-bg: #6B5A4E;
+  --color-testimonial-text: #FFFFFF;
+  --color-testimonial-name: #E8D5B7;
+  --color-accent: #6B5A4E;
+  --theme-heading: var(--color-heading);
+  --theme-subheading: var(--color-subheading);
+  --theme-primary: var(--color-primary-btn-bg);
+  --theme-primary-hover: var(--color-primary-btn-hover-bg);
+  --theme-secondary: var(--color-secondary-btn-text);
+  --theme-testimonial: var(--color-testimonial-bg);
+  --theme-testimonial-name: var(--color-testimonial-name);
+  --theme-accent: var(--color-accent);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #7d6352;
+  --primary: var(--color-primary-btn-bg);
   --surface: #f2efee;
   --primary-foreground: oklch(0.99 0.02 95);
   --secondary: #f2efee;
@@ -151,7 +178,7 @@
 }
 
 body {
-  color: var(--primary);
+  color: #7d6352;
 }
 
 h1 {
@@ -226,18 +253,18 @@ h1 {
 
 .prose-blog h1 { font-size: 2rem; }
 .prose-blog h2 { font-size: 1.5rem; border-bottom: 1px solid #f0ebe7; padding-bottom: 0.4rem; }
-.prose-blog h3 { font-size: 1.2rem; color: #7d6352; }
+.prose-blog h3 { font-size: 1.2rem; color: var(--color-heading); }
 
 .prose-blog p {
   margin-bottom: 1.25rem;
 }
 
 .prose-blog a {
-  color: #7d6352;
+  color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.prose-blog a:hover { color: #5c4a3d; }
+.prose-blog a:hover { color: var(--color-primary-btn-hover-bg); }
 
 .prose-blog strong {
   color: #1f2937;
@@ -253,7 +280,7 @@ h1 {
 .prose-blog li { margin-bottom: 0.4rem; }
 
 .prose-blog blockquote {
-  border-left: 4px solid #7d6352;
+  border-left: 4px solid var(--color-accent);
   margin: 1.5rem 0;
   padding: 0.75rem 1.25rem;
   background-color: #f9f6f4;
@@ -269,7 +296,7 @@ h1 {
   font-size: 0.95rem;
 }
 .prose-blog th {
-  background-color: #7d6352;
+  background-color: var(--color-primary-btn-bg);
   color: white;
   padding: 0.6rem 1rem;
   text-align: left;
@@ -295,7 +322,7 @@ h1 {
 
 .prose-blog :not(pre) > code {
   background-color: #f3f0ee;
-  color: #7d6352;
+  color: var(--color-accent);
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   font-size: 0.875em;

@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Hero Banner */}
       <div className="max-w-7xl mx-auto px-6 py-12 text-center flex flex-col items-center">
         <span
-          className="inline-block px-3 py-1 rounded-full mb-3"
+          className="inline-block px-3 py-1 rounded-full mb-3 text-accent"
           style={{
             fontFamily: "Poppins, sans-serif",
             fontWeight: 600,
@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: Props) {
           {post.category}
         </span>
         <h1
-          className="mb-3"
+          className="mb-3 text-heading"
           style={{
             fontFamily: "Times New Roman, serif",
             fontWeight: 700,
@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
           {post.title}
         </h1>
         <h2
-          className="mb-6"
+          className="mb-6 text-subheading"
           style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 400,
@@ -129,10 +129,10 @@ export default async function BlogPostPage({ params }: Props) {
               />
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-800">
+              <p className="text-sm font-semibold text-heading">
                 {post.author}
               </p>
-              <p className="text-xs text-gray-400">{formattedDate}</p>
+              <p className="text-xs text-subheading">{formattedDate}</p>
             </div>
           </div>
 
@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mt-16 pt-8 border-t border-gray-100">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#7d6352] hover:text-[#5c4a3d] transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-primary-hover transition-colors"
             >
               ← Back to Blog
             </Link>

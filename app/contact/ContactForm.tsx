@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 const ContactForm = () => {
   return (
     <div>
-      <h2 className="text-4xl font-bold text-primary mb-6 text-center">
+      <h2 className="text-4xl font-bold text-heading mb-6 text-center">
         Send Us a Message
       </h2>
-      <p className="text-muted-foreground mb-6 text-center">
+      <p className="text-subheading mb-6 text-center">
         Tell us how we can help, and we&apos;ll get back to you shortly.
       </p>
 

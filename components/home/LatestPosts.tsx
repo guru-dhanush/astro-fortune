@@ -19,8 +19,10 @@ const LatestPosts = async () => {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-start my-10">
         <div>
-          <h2 className="text-4xl font-bold text-primary mb-6">{LATEST_POSTS.title}</h2>
-          <p className="mt-2 text-sm max-w-lg text-muted-foreground">
+          <h2 className="text-4xl font-bold text-heading mb-6">
+            {LATEST_POSTS.title}
+          </h2>
+          <p className="mt-2 text-sm max-w-lg text-subheading">
             {LATEST_POSTS.subtitle}
           </p>
         </div>
@@ -62,13 +64,13 @@ const LatestPosts = async () => {
           <CarouselPrevious
             size="icon-lg"
             variant="default"
-            className="top-[calc(100%+2.5rem)] right-10  lg:right-14 left-auto border-0 w-8 h-8 lg:w-10 lg:h-10  bg-gray-300"
+            className="top-[calc(100%+2.5rem)] right-10  lg:right-14 left-auto border-0 w-8 h-8 lg:w-10 lg:h-10 bg-accent text-white hover:bg-primary-hover"
           />
 
           <CarouselNext
             size="icon-lg"
             variant="default"
-            className="top-[calc(100%+2.5rem)] right-0 left-auto border-0 w-8 h-8 lg:w-10 lg:h-10  bg-gray-300"
+            className="top-[calc(100%+2.5rem)] right-0 left-auto border-0 w-8 h-8 lg:w-10 lg:h-10 bg-accent text-white hover:bg-primary-hover"
           />
         </Carousel>
       </div>

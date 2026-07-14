@@ -17,7 +17,7 @@ const ContactMain = () => {
       </div>
 
       {/* Form */}
-      <div className="bg-secondary rounded-2xl p-8">
+      <div className="bg-surface rounded-2xl p-8">
         <ContactForm />
       </div>
     </section>

@@ -15,14 +15,15 @@ const BlogHeader = ({ query, onQueryChange }: BlogHeaderProps) => {
         Spiritual Wisdom & Guidance
       </Badge>
 
-      <h2 className="text-4xl font-bold text-primary mb-6">
-        Spiritual Insights for Personal Growth and <br/>Self Discovery
+      <h2 className="text-4xl font-bold text-heading mb-6">
+        Spiritual Insights for Personal Growth and <br />
+        Self Discovery
       </h2>
 
-      <p className="text-muted-foreground max-w-xl mx-auto mb-10">
-        Explore astrology, numerology, tarot, compatibility, and spiritual wisdom
-        to gain clarity, confidence, and deeper understanding in every area of
-        life. Spiritual Wisdom & Guidance
+      <p className="text-subheading max-w-xl mx-auto mb-10">
+        Explore astrology, numerology, tarot, compatibility, and spiritual
+        wisdom to gain clarity, confidence, and deeper understanding in every
+        area of life. Spiritual Wisdom & Guidance
       </p>
 
       <Input

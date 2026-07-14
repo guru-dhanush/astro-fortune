@@ -20,7 +20,7 @@ const HeroSection = () => {
           className="
     relative mx-auto
     max-w-[90vw] sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl
-    text-4xl font-bold text-primary mb-6
+    text-4xl font-bold text-heading mb-6
     text-[clamp(2.25rem,5vw,4.5rem)]
     leading-[110%] mt-5
 
@@ -55,7 +55,7 @@ const HeroSection = () => {
           Decisions
         </h2>
 
-        <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-muted-foreground">
+        <p className="text-sm m-3  mx-auto mb-6 max-w-[90vw] sm:max-w-xl md:max-w-2xl text-center text-subheading">
           Gain deep insights into your career, relationships, finances, marriage
           and life purpose through personalized Vedic astrology consultations
           and detailed birthchart analysis
