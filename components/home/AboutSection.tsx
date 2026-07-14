@@ -21,7 +21,7 @@ const AboutSection = ({
       ) : null}
       <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 lg:gap-12 rounded-4xl mx-5 p-2">
         <img
-          src="/Katyani-photo.svg"
+          src="/katyani-photo.svg"
           alt="Katyani"
           className="w-full lg:w-auto lg:max-w-sm rounded-3xl shrink-0"
         />
