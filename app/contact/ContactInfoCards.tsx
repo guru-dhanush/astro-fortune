@@ -4,13 +4,8 @@ const cards = [
     title: "Email",
     text: "For inquiries and consultations.",
     value: "contact@astrofortunebykatyaini.com",
+    href: "mailto:contact@astrofortunebykatyaini.com",
   },
-  // {
-  //   icon: "/location.svg",
-  //   title: "Office",
-  //   text: "Come say hello at our office HQ.",
-  //   value: "No: 58 A, East Madison Street, Baltimore, MD, USA 4508",
-  // },
   {
     icon: "/phone.svg",
     title: "Phone",
@@ -18,6 +13,7 @@ const cards = [
     subtext: "Mon-Sat",
     subsubtext: "10:00 AM -6:00 PM",
     value: "+91 - 8595822799",
+    href: "tel:+918595822799",
   },
 ];
 
@@ -25,9 +21,10 @@ const ContactInfoCards = () => {
   return (
     <section className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-8 mb-20">
       {cards.map((card, idx) => (
-        <div
+        <a
           key={idx}
-          className="bg-brown-50 border border-brown-100 rounded-2xl p-8 text-center w-full sm:w-105"
+          href={card.href}
+          className="bg-brown-50 border border-brown-100 rounded-2xl p-8 text-center w-full sm:w-105 transition-colors hover:bg-brown-100 cursor-pointer block"
         >
           <div className="w-10 h-10 mx-auto mb-4 rounded-full bg-background border border-secondary/20 flex items-center justify-center text-accent">
             <img src={card.icon} className="w-5 h-5 text-accent" />
@@ -44,7 +41,7 @@ const ContactInfoCards = () => {
             <p className="text-sm text-subheading mb-2">{card.subsubtext}</p>
           )}
           <p className="text-sm font-medium text-accent">{card.value}</p>
-        </div>
+        </a>
       ))}
     </section>
   );
